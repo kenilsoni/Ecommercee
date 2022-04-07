@@ -43,10 +43,7 @@
                             <h5 class="card-header">Add Product</h5>
                             <div class="card-body">
                                 <form>
-                                    <div class="form-group">
-                                        <label for="inputText3" class="col-form-label">Product ID</label>
-                                        <input id="inputText3" type="number" class="form-control" placeholder="Product ID">
-                                    </div>
+
                                     <div class="form-group">
                                         <label for="inputText3" class="col-form-label">Product Name</label>
                                         <input id="inputText3" type="text" class="form-control" placeholder="Product Name">

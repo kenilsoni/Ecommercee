@@ -69,4 +69,12 @@ class AdminController
     {
         include("./views/user_list.php");
     }
+    public function add_color()
+    {
+        include("./views/add_color.php");
+    }
+    public function add_size()
+    {
+        include("./views/add_size.php");
+    }
 }

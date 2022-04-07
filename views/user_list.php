@@ -50,8 +50,7 @@
                                             <th>Phone</th>
                                             <th>Email</th>
                                             <th>Address</th>
-                                            <th>Status</th>
-
+                                           
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -62,7 +61,7 @@
                                             <td>20</td>
 
 
-                                            <td><a href="#" class="btn btn-rounded btn-primary">Active</a> </td>
+                                          
                                         </tr>
                                         <tr>
                                             <td>id000001 </td>
@@ -71,7 +70,7 @@
                                             <td>20</td>
 
 
-                                            <td><a href="#" class="btn btn-rounded btn-primary">Active</a> </td>
+                                          
                                         </tr>
                                         <tr>
                                             <td>id000001 </td>
@@ -80,7 +79,7 @@
                                             <td>20</td>
 
 
-                                            <td><a href="#" class="btn btn-rounded btn-primary">Active</a> </td>
+                                          
                                         </tr>
 
 

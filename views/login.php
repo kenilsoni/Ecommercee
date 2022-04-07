@@ -1,3 +1,4 @@
+<?php session_start(); if(isset($_SESSION['ID'])){ header("location:?controller=Admin&function=admin_page");}?>
 <!doctype html>
 <html lang="en">
 
@@ -34,18 +35,53 @@
     <!-- ============================================================== -->
     <div class="splash-container">
         <div class="card ">
-            <div class="card-header text-center"><a href="../index.html"><img class="logo-img" src="./assets/images/logo.png" alt="logo"></a><span class="splash-description">Please enter your credentials.</span></div>
+            <div class="card-header text-center"><i class="fa fa-shopping-cart fa-4x" aria-hidden="true"></i><span class="splash-description">Please enter your credentials.</span></div>
             <div class="card-body">
+                <?php 
+                if (isset($_SESSION['token_password'])) {
+                    if ($_SESSION['token_password']) { ?>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Please Enter Valid Password!!!</strong>
+                            <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </a>
+                        </div><?php unset($_SESSION['token_password']);
+                            }
+                        } ?>
+                <?php if (isset($_SESSION['token_username'])) {
+                    if ($_SESSION['token_username']) { ?>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Please Enter Valid UserName!!!</strong>
+                            <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </a>
+                        </div><?php unset($_SESSION['token_username']);
+                            }
+                        } ?>
+                <?php if (isset($_SESSION['token_method'])) {
+                    if ($_SESSION['token_method']) { ?>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Something Went Wrong!!!</strong>
+                            <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </a>
+                        </div><?php unset($_SESSION['token_method']);
+                            }
+                        } ?>
                 <form action="?function=check_login" method="post">
                     <div class="form-group">
-                        <input class="form-control form-control-lg" id="username" name="username" type="text" required="" placeholder="Username" autocomplete="off">
+                        <input class="form-control form-control-lg" id="username" name="username" type="text" required="" value="<?php if (isset($_COOKIE["member_login"])) {
+                                                                                                                                        echo $_COOKIE["member_login"];
+                                                                                                                                    } ?>" placeholder="Username" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <input class="form-control form-control-lg" id="password" name="password" type="password" required="" placeholder="Password">
+                        <input class="form-control form-control-lg" id="password" name="password" type="password" required="" value="<?php if (isset($_COOKIE["member_password"])) {
+                                                                                                                                            echo $_COOKIE["member_password"];
+                                                                                                                                        } ?>" placeholder="Password">
                     </div>
                     <div class="form-group">
                         <label class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox"><span class="custom-control-label">Remember Me</span>
+                            <input class="custom-control-input" type="checkbox" name="remember" <?php if (isset($_COOKIE["member_login"])) { ?> checked <?php } ?>><span class="custom-control-label">Remember Me</span>
                         </label>
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>

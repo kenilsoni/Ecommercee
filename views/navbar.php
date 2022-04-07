@@ -23,13 +23,13 @@ if (!isset($_SESSION['ID'])) {
     <link rel="stylesheet" type="text/css" href="./assets/vendor/datatables/css/buttons.bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="./assets/vendor/datatables/css/select.bootstrap4.css">
     <link rel="stylesheet" type="text/css" href="./assets/vendor/datatables/css/fixedHeader.bootstrap4.css">
-    <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+    <title>E-commerce | Admin Panel</title>
 </head>
 
 <body>
     <div class="dashboard-header">
         <nav class="navbar navbar-expand-lg bg-white fixed-top">
-            <a class="navbar-brand" href="index.html">Concept</a>
+            <a class="navbar-brand" href="?controller=Admin&function=admin_page"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;E-Commerce</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -49,7 +49,6 @@ if (!isset($_SESSION['ID'])) {
                                 <h5 class="mb-0 text-white nav-user-name">Welcome Admin </h5>
                                 <span class="status"></span><span class="ml-2">Available</span>
                             </div>
-                            <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
                             <a class="dropdown-item" href="?controller=Admin&function=logout"><i class="fas fa-power-off mr-2"></i>Logout</a>
                         </div>
                     </li>

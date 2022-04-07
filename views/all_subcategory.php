@@ -23,8 +23,8 @@
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Sub-Category</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">All Sub-Category </li>
+                                    <li class="breadcrumb-item"><a href="?controller=Admin&function=all_subcategory" class="breadcrumb-link">Sub-Category</a></li>
+                                    <li class="breadcrumb-item active page_name" aria-current="page">All Sub-Category </li>
                                 </ol>
                             </nav>
                         </div>
@@ -35,10 +35,11 @@
             <!-- end pageheader  -->
             <!-- ============================================================== -->
             <div class="ecommerce-widget">
-                <!-- All Category  -->
+                <!-- All SubCategory  -->
                 <!-- ============================================================== -->
 
-                <div class="col-12">
+                <div class="col-12 subcategory_data">
+                    <div class="mb-2"><a href="?controller=Admin&function=add_subcategory" class="btn btn-primary active">Add Sub-Category</a></div>
                     <div class="card">
                         <h5 class="card-header">All Sub-Category</h5>
                         <div class="card-body">
@@ -60,7 +61,7 @@
 
 
 
-                                            <td><a href="#" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
+                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
                                         </tr>
                                         <tr>
                                             <td>Product #1 </td>
@@ -69,7 +70,7 @@
 
 
 
-                                            <td><a href="#" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
+                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
                                         </tr>
                                         <tr>
                                             <td>Product #1 </td>
@@ -77,7 +78,7 @@
                                             <td>id000003 </td>
 
 
-                                            <td><a href="#" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
+                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
                                         </tr>
                                         <tr>
                                             <td>Product #1 </td>
@@ -86,7 +87,7 @@
 
 
 
-                                            <td><a href="#" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
+                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
                                         </tr>
                                         <tr>
                                             <td>Product #1 </td>
@@ -94,16 +95,7 @@
                                             <td>id000004 </td>
 
 
-                                            <td><a href="#" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Product #1 </td>
-                                            <td>Product #4 </td>
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
+                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
                                         </tr>
                                         <tr>
                                             <td>Product #1 </td>
@@ -112,7 +104,16 @@
 
 
 
-                                            <td><a href="#" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
+                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Product #1 </td>
+                                            <td>Product #4 </td>
+                                            <td>id000004 </td>
+
+
+
+                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
                                         </tr>
                                         <tr>
 
@@ -122,7 +123,7 @@
 
 
 
-                                            <td><a href="#" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
+                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
                                         </tr>
                                         <tr>
                                             <td>Product #1 </td>
@@ -131,7 +132,7 @@
 
 
 
-                                            <td><a href="#" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
+                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
                                         </tr>
                                         <tr>
                                             <td>Product #1 </td>
@@ -140,7 +141,7 @@
 
 
 
-                                            <td><a href="#" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
+                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
                                         </tr>
                                         <tr>
                                             <td>Product #1 </td>
@@ -149,7 +150,7 @@
 
 
 
-                                            <td><a href="#" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
+                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
                                         </tr>
                                         <tr>
                                             <td>Product #1 </td>
@@ -158,67 +159,63 @@
 
 
 
-                                            <td><a href="#" class="btn btn-rounded btn-primary" data-toggle="modal" data-target="#edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
+                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
                                         </tr>
 
                                     </tbody>
 
 
                                 </table>
-                                <!-- Edit Modal -->
-                                <div class="modal fade" id="edit_subcategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content ">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Update Category</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <div class="form-group">
-                                                        <label for="Category">Category</label><br>
-                                                        <select class="form-control" name="languages" id="Category">
-                                                            <option value="javascriptq" selected>Select</option>
-                                                            <option value="javascript">MEN</option>
-                                                            <option value="php">WOMEN</option>
-                                                            <option value="java">KIDS</option>
-                                                            <option value="golang">ACCESSORIES</option>
 
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="Category">Sub-Category</label><br>
-                                                        <select class="form-control" name="languages" id="Category">
-                                                            <option value="javascriptq" selected>Select</option>
-                                                            <option value="javascript">MEN</option>
-                                                            <option value="php">WOMEN</option>
-                                                            <option value="java">KIDS</option>
-                                                            <option value="golang">ACCESSORIES</option>
-
-                                                        </select>
-                                                    </div>
-
-
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Update changes</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- ============================================================== -->
-                <!-- end ALL category  -->
+                <!-- End ALL Subcategory  -->
+                <!-- Update SubCategory -->
+                <div class="row d-flex justify-content-center update_subcategory" style="display:none!important">
+                    <div class="col-10">
+                        <div class="card">
+                            <h5 class="card-header">Update SubCategory</h5>
+                            <div class="card-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="Category">Category</label><br>
+                                        <select class="form-control" name="languages" id="Category">
+                                            <option value="javascriptq" selected>Select</option>
+                                            <option value="javascript">MEN</option>
+                                            <option value="php">WOMEN</option>
+                                            <option value="java">KIDS</option>
+                                            <option value="golang">ACCESSORIES</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Category">Sub-Category</label><br>
+                                        <select class="form-control" name="languages" id="SubCategory">
+                                            <option value="javascriptq" selected>Select</option>
+                                            <option value="javascript">MEN</option>
+                                            <option value="php">WOMEN</option>
+                                            <option value="java">KIDS</option>
+                                            <option value="golang">ACCESSORIES</option>
+
+                                        </select>
+                                    </div>
+                                    <a href="#" class="btn btn-primary btn-block">Update SubCategory</a>
+
+
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <?php include("footer.php"); ?>
+<script src="./assets/js/subcategory.js"></script>
