@@ -15,16 +15,14 @@
 
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-1"><i class="fa fa-solid fa-plus-square"></i>Categories <span class="badge badge-success">6</span></a>
-                                <div id="submenu-2" class="collapse submenu" style="">
+                                <a class="nav-link active" href="?controller=Admin&function=all_category" ><i class="fa fa-solid fa-plus-square"></i>Categories <span class="badge badge-success">6</span></a>
+                                <!-- <div id="submenu-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
 
 
                                             <ul class="nav flex-column">
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="?controller=Admin&function=add_category">Add Categories</a>
-                                                </li>
+                                                
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="?controller=Admin&function=all_category">All Categories</a>
                                                 </li>
@@ -35,7 +33,7 @@
 
 
                                     </ul>
-                                </div>
+                                </div> -->
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-11" aria-controls="submenu-1"><i class="fa fa-solid fa-plus-square"></i>Sub Categories <span class="badge badge-success">6</span></a>
@@ -45,9 +43,7 @@
 
 
                                             <ul class="nav flex-column">
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="?controller=Admin&function=add_subcategory">Add SubCategories</a>
-                                                </li>
+                                               
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="?controller=Admin&function=all_subcategory">All SubCategories</a>
                                                 </li>
@@ -69,9 +65,7 @@
 
 
                                             <ul class="nav flex-column">
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="?controller=Admin&function=add_product">Add Products</a>
-                                                </li>
+                                               
                                                
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="?controller=Admin&function=all_product">All Products</a>

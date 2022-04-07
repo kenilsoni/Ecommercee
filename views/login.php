@@ -1,4 +1,7 @@
-<?php session_start(); if(isset($_SESSION['ID'])){ header("location:?controller=Admin&function=admin_page");}?>
+<?php session_start();
+if (isset($_SESSION['ID'])) {
+    header("location:?controller=Admin&function=admin_page");
+} ?>
 <!doctype html>
 <html lang="en">
 
@@ -37,10 +40,15 @@
         <div class="card ">
             <div class="card-header text-center"><i class="fa fa-shopping-cart fa-4x" aria-hidden="true"></i><span class="splash-description">Please enter your credentials.</span></div>
             <div class="card-body">
-                <?php 
+                <?php
                 if (isset($_SESSION['token_password'])) {
                     if ($_SESSION['token_password']) { ?>
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <script>
+                            setTimeout(() => {
+                                document.getElementById("password_check").style.display = 'none';
+                            }, 4000);
+                        </script>
+                        <div class="alert alert-warning alert-dismissible fade show" id="password_check" role="alert">
                             <strong>Please Enter Valid Password!!!</strong>
                             <a href="#" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
@@ -50,7 +58,12 @@
                         } ?>
                 <?php if (isset($_SESSION['token_username'])) {
                     if ($_SESSION['token_username']) { ?>
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <script>
+                            setTimeout(() => {
+                                document.getElementById("username_check").style.display = 'none';
+                            }, 4000);
+                        </script>
+                        <div class="alert alert-warning alert-dismissible fade show" id="username_check" role="alert">
                             <strong>Please Enter Valid UserName!!!</strong>
                             <a href="#" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
@@ -60,7 +73,12 @@
                         } ?>
                 <?php if (isset($_SESSION['token_method'])) {
                     if ($_SESSION['token_method']) { ?>
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <script>
+                            setTimeout(() => {
+                                document.getElementById("method_check").style.display = 'none';
+                            }, 4000);
+                        </script>
+                        <div class="alert alert-warning alert-dismissible fade show" id="method_check" role="alert">
                             <strong>Something Went Wrong!!!</strong>
                             <a href="#" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
@@ -95,6 +113,8 @@
     <!-- end login page  -->
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
+
+
     <script src="./assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
 </body>

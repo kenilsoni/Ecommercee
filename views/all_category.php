@@ -39,12 +39,72 @@
                 <!-- ============================================================== -->
 
                 <div class="col-12 category_data">
-                    <div class="mb-2"><a href="?controller=Admin&function=add_category" class="btn btn-primary active">Add Category</a></div>
+                    <div class="mb-2 ">
+                        <?php if (isset($_SESSION['addcategory_token'])) {
+                            if ($_SESSION['addcategory_token']) { ?>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    Category added successfully!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                            <?php  } else { ?>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    Sorry data is not added!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                        <?php }
+                            unset($_SESSION['addcategory_token']);
+                        } ?>
+
+                        <!-- delete alert -->
+                        <?php if (isset($_SESSION['deletecategory_token'])) {
+                            if ($_SESSION['deletecategory_token']) { ?>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    Category deleted successfully!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                            <?php  } else { ?>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    Sorry data is not deleted!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                        <?php }
+                            unset($_SESSION['deletecategory_token']);
+                        } ?>
+                        <!-- update alert -->
+
+                        <?php if (isset($_SESSION['updatecategory_token'])) {
+                            if ($_SESSION['updatecategory_token']) { ?>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    Category updated successfully!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                            <?php  } else { ?>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    Sorry data is not updated!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                        <?php }
+                            unset($_SESSION['updatecategory_token']);
+                        } ?>
+                        <a href="?controller=Admin&function=add_category" class="btn btn-primary active">Add Category</a>
+                    </div>
                     <div class="card">
                         <h5 class="card-header">All Category</h5>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered first">
+                                <table class="table table-striped table-bordered first" id="category_table">
                                     <thead>
                                         <tr>
 
@@ -53,113 +113,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
 
-
-                                            <td>id000001 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_category">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-
-                                            <td>id000002 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_category">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-
-                                            <td>id000003 </td>
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_category">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_category">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-
-                                            <td>id000004 </td>
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_category">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_category">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_category">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-
-
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_category">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_category">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_category">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_category">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_category">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
 
                                     </tbody>
 
@@ -185,10 +139,11 @@
 
                                     <div class="form-group">
                                         <label for="inputText3" class="col-form-label">Category Name</label>
-                                        <input id="inputText3" type="text" class="form-control" placeholder="Category Name">
+                                        <input type="hidden" class="update_id">
+                                        <input id="inputText3" type="text" class="form-control category_input" placeholder="Category Name">
                                     </div>
 
-                                    <a href="#" class="btn btn-primary btn-block">Update Category</a>
+                                    <button type="button" id="update_categorybtn" class="btn btn-primary btn-block">Update Category</button>
 
                                 </form>
                             </div>

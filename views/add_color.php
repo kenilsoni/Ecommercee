@@ -41,7 +41,7 @@
                 <div class="col-12 color_detail">
                     <div class="mb-2"><a href="#" class="btn btn-primary active add_colorbtn">Add Color</a></div>
                     <div class="card">
-                        <h5 class="card-header">Add Color</h5>
+                        <h5 class="card-header">All Color</h5>
                         <div class="card-body">
 
 

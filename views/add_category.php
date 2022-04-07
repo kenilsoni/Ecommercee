@@ -9,6 +9,12 @@
 <!-- ============================================================== -->
 <!-- wrapper  -->
 <!-- ============================================================== -->
+<style>
+    .error{
+        color:red;
+    }
+</style>
+
 <div class="dashboard-wrapper">
     <div class="dashboard-ecommerce">
         <div class="container-fluid dashboard-content ">
@@ -23,8 +29,8 @@
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Category</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Add Category </li>
+                                    <li class="breadcrumb-item"><a href="?controller=Admin&function=all_category" class="breadcrumb-link">Category</a></li>
+                                    <li class="breadcrumb-item active "  aria-current="page">Add Category </li>
                                 </ol>
                             </nav>
                         </div>
@@ -34,7 +40,7 @@
             <!-- ============================================================== -->
             <!-- end pageheader  -->
             <!-- ============================================================== -->
-            <!-- Add product  -->
+            <!-- Add category  -->
             <!-- ============================================================== -->
             <div class="ecommerce-widget">
                 <div class="row d-flex justify-content-center">
@@ -42,14 +48,14 @@
                         <div class="card">
                             <h5 class="card-header">Add Category</h5>
                             <div class="card-body">
-                                <form>
+                                <form id="validate_form">
 
                                     <div class="form-group">
                                         <label for="inputText3" class="col-form-label">Category Name</label>
-                                        <input id="inputText3" type="text" class="form-control" placeholder="Category Name">
+                                        <input id="inputText3" type="text" class="form-control" name="category_name" placeholder="Category Name">
                                     </div>
 
-                                    <a href="#" class="btn btn-primary btn-block">Add Category</a>
+                                    <button type="button" id="add_category" class="btn btn-primary btn-block">Add Category</button>
 
                                 </form>
                             </div>
@@ -60,7 +66,7 @@
                 </div>
             </div>
             <!-- ============================================================== -->
-            <!-- end Add product  -->
+            <!-- end Add category  -->
 
         </div>
     </div>
@@ -68,3 +74,5 @@
 </div>
 
 <?php include("footer.php"); ?>
+
+<script src="./assets/js/category.js"></script>

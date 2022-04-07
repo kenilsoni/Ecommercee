@@ -9,6 +9,11 @@
 <!-- ============================================================== -->
 <!-- wrapper  -->
 <!-- ============================================================== -->
+<style>
+    .error{
+        color:red;
+    }
+</style>
 <div class="dashboard-wrapper">
     <div class="dashboard-ecommerce">
         <div class="container-fluid dashboard-content ">
@@ -219,28 +224,28 @@
                         <div class="card">
                             <h5 class="card-header">Update Product</h5>
                             <div class="card-body">
-                                <form>
+                                <form id="validate_form">
 
                                     <div class="form-group">
-                                        <label for="inputText3" class="col-form-label">Product Name</label>
-                                        <input id="inputText3" type="text" class="form-control" placeholder="Product Name">
+                                        <label for="inputText1" class="col-form-label">Product Name</label>
+                                        <input id="inputText1" type="text" class="form-control" name="product_name" placeholder="Product Name">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Product Description</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea class="form-control" name="product_desc" id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Price (Per Unit)</label>
-                                        <input id="inputText4" type="number" class="form-control" placeholder="Price">
+                                        <input id="inputText4" type="number" name="product_price" class="form-control" placeholder="Price">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Quantity</label>
-                                        <input id="inputText4" type="number" class="form-control" placeholder="Quantity">
+                                        <label for="inputText6" class="col-form-label">Quantity</label>
+                                        <input id="inputText6" type="number" name="product_quantity" class="form-control" placeholder="Quantity">
                                     </div>
                                     <div class="form-group">
                                         <label for="Category">Category</label><br>
-                                        <select class="form-control" name="languages" id="Category">
-                                            <option value="javascriptq" selected>Select</option>
+                                        <select class="form-control" name="product_category" id="Category">
+                                            <option value="" selected>Select</option>
                                             <option value="javascript">MEN</option>
                                             <option value="php">WOMEN</option>
                                             <option value="java">KIDS</option>
@@ -250,8 +255,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="Sub_Category">Sub Category</label><br>
-                                        <select name="languages" class="form-control" id="Sub_Category">
-                                            <option value="javascriptq" selected>Select</option>
+                                        <select class="form-control" name="product_subcategory" id="Sub_Category">
+                                            <option value="" selected>Select</option>
                                             <option value="javascript">T-Shirt</option>
                                             <option value="php">Shirt</option>
                                             <option value="java">Jeans</option>
@@ -259,17 +264,17 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="product_color">Product Color</label><br>
-                                        <select name="languages" class="form-control" id="product_color">
-                                            <option value="javascriptq" selected>Select</option>
+                                        <select class="form-control" id="product_color" name="product_color">
+                                            <option value="" selected>Select</option>
                                             <option value="javascript">RED</option>
                                             <option value="php">PINK</option>
                                             <option value="java">BLUE</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="product_color">Product Size</label><br>
-                                        <select name="languages" class="form-control" id="product_color">
-                                            <option value="javascriptq" selected>Select</option>
+                                        <label for="product_size">Product Size</label><br>
+                                        <select class="form-control" id="product_size" name="product_size">
+                                            <option value="" selected>Select</option>
                                             <option value="javascript">M</option>
                                             <option value="php">S</option>
                                             <option value="java">XL</option>
@@ -278,10 +283,12 @@
 
                                     <div class="custom-file mb-3">
 
-                                        <input type="file" class="custom-file-input" id="customFile">
+                                        <input type="file" class="custom-file-input" id="customFile" name="files" multiple>
                                         <label class="custom-file-label form-control" for="customFile">Choose Image</label>
+                                        <span class="form-file-text"></span>
                                     </div>
-                                    <a href="#" class="btn btn-primary btn-block">Update Product</a>
+
+                                    <button type="submit" class="btn btn-primary btn-block">Update Product</button>
 
                                 </form>
                             </div>
@@ -296,4 +303,5 @@
 </div>
 
 <?php include("footer.php"); ?>
+
 <script src="./assets/js/product.js"></script>
