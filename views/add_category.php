@@ -52,7 +52,7 @@
 
                                     <div class="form-group">
                                         <label for="inputText3" class="col-form-label">Category Name</label>
-                                        <input id="inputText3" type="text" class="form-control" name="category_name" placeholder="Category Name">
+                                        <input id="inputText3" type="text" class="form-control category_name" name="category_name" placeholder="Category Name">
                                     </div>
 
                                     <button type="button" id="add_category" class="btn btn-primary btn-block">Add Category</button>

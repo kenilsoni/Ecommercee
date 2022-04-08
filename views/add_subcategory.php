@@ -23,7 +23,7 @@
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Sub-Category</a></li>
+                                    <li class="breadcrumb-item"><a href="?controller=Admin&function=all_subcategory" class="breadcrumb-link">Sub-Category</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Add Sub-Category </li>
                                 </ol>
                             </nav>
@@ -34,33 +34,28 @@
             <!-- ============================================================== -->
             <!-- end pageheader  -->
             <!-- ============================================================== -->
-            <!-- Add product  -->
+            <!-- Add subcategory  -->
             <!-- ============================================================== -->
             <div class="ecommerce-widget">
                 <div class="row d-flex justify-content-center">
                     <div class="col-10">
-                    
+
                         <div class="card">
                             <h5 class="card-header">Add Sub-Category</h5>
                             <div class="card-body">
-                                <form>
+                                <form id="validate_form">
                                     <div class="form-group">
                                         <label for="Category">Select Category</label><br>
-                                        <select class="form-control" name="languages" id="Category">
-                                            <option value="javascriptq" selected>Select</option>
-                                            <option value="javascript">MEN</option>
-                                            <option value="php">WOMEN</option>
-                                            <option value="java">KIDS</option>
-                                            <option value="golang">ACCESSORIES</option>
-
+                                        <select class="form-control" name="Category" id="Category">
+                                            <option value="" selected>Select</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText3" class="col-form-label">Sub-Category Name</label>
-                                        <input id="inputText3" type="text" class="form-control" placeholder="Name">
+                                        <input id="inputText3" name="subcategory_name" type="text" class="form-control" placeholder="Name">
                                     </div>
 
-                                    <a href="#" class="btn btn-primary btn-block">Add Sub-Category</a>
+                                    <button type="button" id="add_subcategory" class="btn btn-primary btn-block">Add Sub-Category</button>
 
                                 </form>
                             </div>
@@ -71,7 +66,7 @@
                 </div>
             </div>
             <!-- ============================================================== -->
-            <!-- end Add product  -->
+            <!-- end Add subcategory  -->
 
         </div>
     </div>
@@ -79,3 +74,4 @@
 </div>
 
 <?php include("footer.php"); ?>
+<script src="./assets/js/subcategory.js"></script>

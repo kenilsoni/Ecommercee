@@ -43,7 +43,7 @@
                         <h5 class="card-header">User Details</h5>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered first">
+                                <table class="table table-striped table-bordered first" id="user_table">
                                     <thead>
                                         <tr>
                                             <th>Full Name</th>
@@ -54,34 +54,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>id000001 </td>
-                                            <td>121212</td>
-                                            <td>id000001 </td>
-                                            <td>20</td>
-
-
-                                          
-                                        </tr>
-                                        <tr>
-                                            <td>id000001 </td>
-                                            <td>121212</td>
-                                            <td>id000001 </td>
-                                            <td>20</td>
-
-
-                                          
-                                        </tr>
-                                        <tr>
-                                            <td>id000001 </td>
-                                            <td>121212</td>
-                                            <td>id000001 </td>
-                                            <td>20</td>
-
-
-                                          
-                                        </tr>
-
+                                      
 
                                     </tbody>
 
@@ -101,3 +74,4 @@
 </div>
 
 <?php include("footer.php"); ?>
+<script src="./assets/js/user.js"></script>

@@ -23,8 +23,8 @@
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="?controller=Admin&function=all_subcategory" class="breadcrumb-link">Sub-Category</a></li>
-                                    <li class="breadcrumb-item active page_name" aria-current="page">All Sub-Category </li>
+                                    <li class="breadcrumb-item"><a href="?controller=Admin&function=all_subcategory" class="breadcrumb-link">Sub Category</a></li>
+                                    <li class="breadcrumb-item active page_name" aria-current="page">All Sub Category </li>
                                 </ol>
                             </nav>
                         </div>
@@ -37,130 +37,110 @@
             <div class="ecommerce-widget">
                 <!-- All SubCategory  -->
                 <!-- ============================================================== -->
+                <?php if (isset($_SESSION['addsubcategory_token'])) {
+                    if ($_SESSION['addsubcategory_token']) { ?>
+                        <script>
+                            setTimeout(() => {
+                                document.getElementById("add").style.display = 'none';
+                            }, 4000);
+                        </script>
+                        <div class="alert alert-success alert-dismissible fade show" id=add role="alert">
+                            Category added successfully!!.
+                            <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </a>
+                        </div>
+                    <?php  } else { ?>
+                        <script>
+                            setTimeout(() => {
+                                document.getElementById("err").style.display = 'none';
+                            }, 4000);
+                        </script>
+                        <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
+                            Sorry data is not added!!.
+                            <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </a>
+                        </div>
+                <?php }
+                    unset($_SESSION['addsubcategory_token']);
+                } ?>
 
+                <!-- delete alert -->
+                <?php if (isset($_SESSION['deletesubcategory_token'])) {
+                    if ($_SESSION['deletesubcategory_token']) { ?>
+                        <script>
+                            setTimeout(() => {
+                                document.getElementById("delete").style.display = 'none';
+                            }, 4000);
+                        </script>
+                        <div class="alert alert-success alert-dismissible fade show" id="delete" role="alert">
+                            Category deleted successfully!!.
+                            <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </a>
+                        </div>
+                    <?php  } else { ?>
+                        <script>
+                            setTimeout(() => {
+                                document.getElementById("err").style.display = 'none';
+                            }, 4000);
+                        </script>
+                        <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
+                            Sorry data is not deleted!!.
+                            <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </a>
+                        </div>
+                <?php }
+                    unset($_SESSION['deletesubcategory_token']);
+                } ?>
+                <!-- update alert -->
+
+                <?php if (isset($_SESSION['updatesubcategory_token'])) {
+                    if ($_SESSION['updatesubcategory_token']) { ?>
+                        <script>
+                            setTimeout(() => {
+                                document.getElementById("update").style.display = 'none';
+                            }, 4000);
+                        </script>
+                        <div class="alert alert-success alert-dismissible fade show" id="update" role="alert">
+                            Category updated successfully!!.
+                            <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </a>
+                        </div>
+                    <?php  } else { ?>
+                        <script>
+                            setTimeout(() => {
+                                document.getElementById("err").style.display = 'none';
+                            }, 4000);
+                        </script>
+                        <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
+                            Sorry data is not updated!!.
+                            <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </a>
+                        </div>
+                <?php }
+                    unset($_SESSION['updatesubcategory_token']);
+                } ?>
                 <div class="col-12 subcategory_data">
                     <div class="mb-2"><a href="?controller=Admin&function=add_subcategory" class="btn btn-primary active">Add Sub-Category</a></div>
                     <div class="card">
                         <h5 class="card-header">All Sub-Category</h5>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered first">
+                                <table class="table table-striped table-bordered first" id="subcategory_table">
                                     <thead>
                                         <tr>
-                                            <th>SubCategory ID</th>
+
                                             <th>Category Name</th>
                                             <th>SubCategory Name</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Product #1 </td>
-                                            <td>Product #1 </td>
-                                            <td>id000001 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Product #1 </td>
-                                            <td>Product #2 </td>
-                                            <td>id000002 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Product #1 </td>
-                                            <td>Product #3 </td>
-                                            <td>id000003 </td>
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Product #1 </td>
-                                            <td>Product #4 </td>
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Product #1 </td>
-                                            <td>Product #4 </td>
-                                            <td>id000004 </td>
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Product #1 </td>
-                                            <td>Product #4 </td>
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Product #1 </td>
-                                            <td>Product #4 </td>
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-                                            <td>Product #1 </td>
-                                            <td>Product #4 </td>
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Product #1 </td>
-                                            <td>Product #4 </td>
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Product #1 </td>
-                                            <td>Product #4 </td>
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Product #1 </td>
-                                            <td>Product #4 </td>
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Product #1 </td>
-                                            <td>Product #4 </td>
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_subcategory">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
 
                                     </tbody>
 
@@ -181,28 +161,19 @@
                             <div class="card-body">
                                 <form>
                                     <div class="form-group">
+                                        <input type="hidden" class="update_id">
                                         <label for="Category">Category</label><br>
-                                        <select class="form-control" name="languages" id="Category">
-                                            <option value="javascriptq" selected>Select</option>
-                                            <option value="javascript">MEN</option>
-                                            <option value="php">WOMEN</option>
-                                            <option value="java">KIDS</option>
-                                            <option value="golang">ACCESSORIES</option>
+                                        <select class="form-control category_id" name="Category" id="Category">
+                                            <option value="" selected>Select</option>
+
 
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Category">Sub-Category</label><br>
-                                        <select class="form-control" name="languages" id="SubCategory">
-                                            <option value="javascriptq" selected>Select</option>
-                                            <option value="javascript">MEN</option>
-                                            <option value="php">WOMEN</option>
-                                            <option value="java">KIDS</option>
-                                            <option value="golang">ACCESSORIES</option>
-
-                                        </select>
+                                        <label for="inputText3">Sub Category</label><br>
+                                        <input id="inputText3" type="text" class="form-control subcategory_input" placeholder="SubCategory Name">
                                     </div>
-                                    <a href="#" class="btn btn-primary btn-block">Update SubCategory</a>
+                                    <button type="button" id="update_subcategorybtn" class="btn btn-primary btn-block">Update SubCategory</button>
 
 
                                 </form>

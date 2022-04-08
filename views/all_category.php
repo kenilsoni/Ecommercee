@@ -9,6 +9,11 @@
 <!-- ============================================================== -->
 <!-- wrapper  -->
 <!-- ============================================================== -->
+<style>
+    .error {
+        color: red;
+    }
+</style>
 <div class="dashboard-wrapper">
     <div class="dashboard-ecommerce">
         <div class="container-fluid dashboard-content ">
@@ -42,14 +47,24 @@
                     <div class="mb-2 ">
                         <?php if (isset($_SESSION['addcategory_token'])) {
                             if ($_SESSION['addcategory_token']) { ?>
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("add").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-success alert-dismissible fade show" id="add" role="alert">
                                     Category added successfully!!.
                                     <a href="#" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </a>
                                 </div>
                             <?php  } else { ?>
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("err").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
                                     Sorry data is not added!!.
                                     <a href="#" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">×</span>
@@ -62,14 +77,24 @@
                         <!-- delete alert -->
                         <?php if (isset($_SESSION['deletecategory_token'])) {
                             if ($_SESSION['deletecategory_token']) { ?>
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("delete").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-success alert-dismissible fade show" id="delete" role="alert">
                                     Category deleted successfully!!.
                                     <a href="#" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </a>
                                 </div>
                             <?php  } else { ?>
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("err").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
                                     Sorry data is not deleted!!.
                                     <a href="#" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">×</span>
@@ -82,14 +107,24 @@
 
                         <?php if (isset($_SESSION['updatecategory_token'])) {
                             if ($_SESSION['updatecategory_token']) { ?>
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("update").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-success alert-dismissible fade show" id="update" role="alert">
                                     Category updated successfully!!.
                                     <a href="#" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </a>
                                 </div>
                             <?php  } else { ?>
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("err").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
                                     Sorry data is not updated!!.
                                     <a href="#" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">×</span>
@@ -135,12 +170,12 @@
                         <div class="card">
                             <h5 class="card-header">Update Category</h5>
                             <div class="card-body">
-                                <form>
+                                <form id="validate_form">
 
                                     <div class="form-group">
                                         <label for="inputText3" class="col-form-label">Category Name</label>
                                         <input type="hidden" class="update_id">
-                                        <input id="inputText3" type="text" class="form-control category_input" placeholder="Category Name">
+                                        <input id="inputText3" type="text" class="form-control category_input" name="category_name" placeholder="Category Name">
                                     </div>
 
                                     <button type="button" id="update_categorybtn" class="btn btn-primary btn-block">Update Category</button>
