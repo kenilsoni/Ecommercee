@@ -35,19 +35,18 @@ class SubCategoryController
                     'ID' => $id,
                     'Subcategory_Name' => $name
                 );
-                // print_r($data);die();
                 $success = $this->model->addsubcategory_data($data);
                 if ($success == 1) {
 
                     $_SESSION['addsubcategory_token'] = true;
-                    return 1;
+                    header("location:?controller=SubCategory&function=all_subcategory");
                 } else {
                     $_SESSION['addsubcategory_token'] = false;
-                    return 0;
+                    header("location:?controller=SubCategory&function=all_subcategory");
                 }
             } else {
                 $_SESSION['addsubcategory_token'] = false;
-                return 0;
+                header("location:?controller=SubCategory&function=all_subcategory");
             }
         }
     }
@@ -63,14 +62,11 @@ class SubCategoryController
                 if ($success == 1) {
 
                     $_SESSION['deletesubcategory_token'] = true;
-                    return 1;
                 } else {
                     $_SESSION['deletesubcategory_token'] = false;
-                    return 0;
                 }
             } else {
                 $_SESSION['deletesubcategory_token'] = false;
-                return 0;
             }
         }
     }
@@ -79,7 +75,7 @@ class SubCategoryController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['update_id'];
             $category_id = $_POST['Category'];
-            $subcategory = $this->test_input($_POST['subcategory_input']);
+            $subcategory = $this->test_input($_POST['subcategory_name']);
             session_start();
             if ($subcategory != "") {
                 $data = array(
@@ -95,14 +91,14 @@ class SubCategoryController
                 if ($success == 1) {
 
                     $_SESSION['updatesubcategory_token'] = true;
-                    return 1;
+                    header("location:?controller=SubCategory&function=all_subcategory");
                 } else {
                     $_SESSION['updatesubcategory_token'] = false;
-                    return 0;
+                    header("location:?controller=SubCategory&function=all_subcategory");
                 }
             } else {
                 $_SESSION['updatesubcategory_token'] = false;
-                return 0;
+                header("location:?controller=SubCategory&function=all_subcategory");
             }
         }
     }

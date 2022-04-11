@@ -25,7 +25,11 @@ if (!isset($_SESSION['ID'])) {
     <link rel="stylesheet" type="text/css" href="./assets/vendor/datatables/css/fixedHeader.bootstrap4.css">
     <title>E-commerce | Admin Panel</title>
 </head>
-
+<style>
+    .error{
+        color:red;
+    }
+</style>
 <body>
     <div class="dashboard-header">
         <nav class="navbar navbar-expand-lg bg-white fixed-top">

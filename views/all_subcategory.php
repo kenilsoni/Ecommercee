@@ -24,7 +24,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="?controller=Admin&function=all_subcategory" class="breadcrumb-link">Sub Category</a></li>
-                                    <li class="breadcrumb-item active page_name" aria-current="page">All Sub Category </li>
+                                    <li class="breadcrumb-item active page_name" aria-current="page">All SubCategory </li>
                                 </ol>
                             </nav>
                         </div>
@@ -45,7 +45,7 @@
                             }, 4000);
                         </script>
                         <div class="alert alert-success alert-dismissible fade show" id=add role="alert">
-                            Category added successfully!!.
+                            SubCategory added successfully!!.
                             <a href="#" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </a>
@@ -75,7 +75,7 @@
                             }, 4000);
                         </script>
                         <div class="alert alert-success alert-dismissible fade show" id="delete" role="alert">
-                            Category deleted successfully!!.
+                            SubCategory deleted successfully!!.
                             <a href="#" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </a>
@@ -105,7 +105,7 @@
                             }, 4000);
                         </script>
                         <div class="alert alert-success alert-dismissible fade show" id="update" role="alert">
-                            Category updated successfully!!.
+                            SubCategory updated successfully!!.
                             <a href="#" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </a>
@@ -126,15 +126,15 @@
                     unset($_SESSION['updatesubcategory_token']);
                 } ?>
                 <div class="col-12 subcategory_data">
-                    <div class="mb-2"><a href="?controller=Admin&function=add_subcategory" class="btn btn-primary active">Add Sub-Category</a></div>
+                    <div class="mb-2"><a href="?controller=Admin&function=add_subcategory" class="btn btn-primary active">Add SubCategory</a></div>
                     <div class="card">
-                        <h5 class="card-header">All Sub-Category</h5>
+                        <h5 class="card-header">All SubCategory</h5>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered first" id="subcategory_table">
                                     <thead>
                                         <tr>
-
+                                            <th>ID</th>
                                             <th>Category Name</th>
                                             <th>SubCategory Name</th>
                                             <th>Action</th>
@@ -159,9 +159,9 @@
                         <div class="card">
                             <h5 class="card-header">Update SubCategory</h5>
                             <div class="card-body">
-                                <form>
+                                <form id="validate_form" action="?controller=SubCategory&function=update_subcategory" method="post">
                                     <div class="form-group">
-                                        <input type="hidden" class="update_id">
+                                        <input type="hidden" class="update_id" name="update_id">
                                         <label for="Category">Category</label><br>
                                         <select class="form-control category_id" name="Category" id="Category">
                                             <option value="" selected>Select</option>
@@ -171,9 +171,9 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText3">Sub Category</label><br>
-                                        <input id="inputText3" type="text" class="form-control subcategory_input" placeholder="SubCategory Name">
+                                        <input id="inputText3" type="text" class="form-control subcategory_input" name="subcategory_name" placeholder="SubCategory Name">
                                     </div>
-                                    <button type="button" id="update_subcategorybtn" class="btn btn-primary btn-block">Update SubCategory</button>
+                                    <button type="submit" class="btn btn-primary btn-block">Update SubCategory</button>
 
 
                                 </form>

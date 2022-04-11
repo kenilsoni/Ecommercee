@@ -57,9 +57,9 @@
                                 </div> -->
                             </li>
 
-                           <!--  <li class="nav-item ">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-1"><i class="fa fa-solid fa-pen-square"></i>Products <span class="badge badge-success">6</span></a>
-                                <div id="submenu-4" class="collapse submenu" style="">
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="?controller=Admin&function=all_product"><i class="fa fa-solid fa-pen-square"></i>Products <span class="badge badge-success">6</span></a>
+                                <!-- <div id="submenu-4" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
 
@@ -77,11 +77,11 @@
 
 
                                     </ul>
-                                </div>
+                                </div> -->
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-0" aria-controls="submenu-1"><i class="fa fa-solid fa-paint-brush"></i>Color & Size <span class="badge badge-success">6</span></a>
-                                <div id="submenu-0" class="collapse submenu" style="">
+                                <div id="submenu-0" class="collapse submenu" >
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
 
@@ -106,7 +106,7 @@
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-1"><i class="fa fa-solid fa-money-bill-alt"></i>Orders <span class="badge badge-success">6</span></a>
-                                <div id="submenu-5" class="collapse submenu" style="">
+                                <div id="submenu-5" class="collapse submenu" >
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
 
@@ -129,7 +129,7 @@
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fa fa-solid fa-address-book"></i>Address <span class="badge badge-success">6</span></a>
-                                <div id="submenu-6" class="collapse submenu" style="">
+                                <div id="submenu-6" class="collapse submenu" >
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
 
@@ -152,7 +152,7 @@
 
                                     </ul>
                                 </div>
-                            </li> -->
+                            </li>
                             <li class="nav-item ">
                                 <a class="nav-link active" href="?controller=Admin&function=user_list"><i class="fa fa-fw fa-user-circle"></i>Users <span class="badge badge-success">6</span></a> 
                                 <!-- <div id="submenu-7" class="collapse submenu" style="">

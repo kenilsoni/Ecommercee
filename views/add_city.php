@@ -34,21 +34,111 @@
             <!-- ============================================================== -->
             <!-- end pageheader  -->
             <!-- ============================================================== -->
-            <!-- Add product  -->
+            <!-- City Statrt   -->
             <!-- ============================================================== -->
             <div class="ecommerce-widget">
                 <!--  city detail -->
                 <!-- ============================================================== -->
                 <div class="col-12 city_data">
-                    <div class="mb-2"><a href="#" class="btn btn-primary active add_citybtn">Add City</a></div>
+                    <div class="mb-2">
+                        <?php if (isset($_SESSION['addcity_token'])) {
+                            if ($_SESSION['addcity_token']) { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("add").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-success alert-dismissible fade show" id="add" role="alert">
+                                    City added successfully!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                            <?php  } else { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("err").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
+                                    Sorry data is not added!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                        <?php }
+                            unset($_SESSION['addcity_token']);
+                        } ?>
+
+                        <!-- delete alert -->
+                        <?php if (isset($_SESSION['deletecity_token'])) {
+                            if ($_SESSION['deletecity_token']) { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("delete").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-success alert-dismissible fade show" id="delete" role="alert">
+                                    City deleted successfully!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                            <?php  } else { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("err").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
+                                    Sorry data is not deleted!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                        <?php }
+                            unset($_SESSION['deletecity_token']);
+                        } ?>
+                        <!-- update alert -->
+
+                        <?php if (isset($_SESSION['updatecity_token'])) {
+                            if ($_SESSION['updatecity_token']) { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("update").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-success alert-dismissible fade show" id="update" role="alert">
+                                    City updated successfully!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                            <?php  } else { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("err").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
+                                    Sorry data is not updated!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                        <?php }
+                            unset($_SESSION['updatecity_token']);
+                        } ?>
+                        <a href="#" class="btn btn-primary active add_citybtn">Add City</a>
+                    </div>
                     <div class="card">
                         <h5 class="card-header">All City</h5>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered first">
+                                <table class="table table-striped table-bordered first" id="city_table">
                                     <thead>
                                         <tr>
-
+                                        <th>ID</th>
                                             <th>Country Name</th>
                                             <th>State Name </th>
                                             <th>City Name</th>
@@ -56,52 +146,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                        <tr>
-
-
-
-                                            <td>id000004 </td>
-                                            <td>id000004 </td>
-                                            <td>id000004 </td>
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_city">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-
-                                            <td>id000004 </td>
-                                            <td>id000004 </td>
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_city">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-
-                                            <td>id000004 </td>
-                                            <td>id000004 </td>
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_city">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-
-
                                     </tbody>
-
-
                                 </table>
-
                             </div>
-
                         </div>
-
-
                     </div>
                 </div>
                 <!-- ============================================================== -->
@@ -112,37 +160,24 @@
                         <div class="card">
                             <h5 class="card-header">Add City</h5>
                             <div class="card-body">
-                                <form>
+                                <form id="validate_form" action="?controller=Address&function=add_citydata" method="post">
                                     <div class="form-group">
                                         <label for="Category">Select Country</label><br>
-                                        <select class="form-control" name="languages" id="Category">
-                                            <option value="javascriptq" selected>Select</option>
-                                            <option value="javascript">INDIA</option>
-                                            <option value="php">JAPAN</option>
-                                            <option value="java">NEPAL</option>
-                                            <option value="golang">IRAN</option>
-
+                                        <select class="form-control Country" name="cid">
+                                            <option value="" selected>Select</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="Category">Select State</label><br>
-                                        <select class="form-control" name="languages" id="Category">
-                                            <option value="javascriptq" selected>Select</option>
-                                            <option value="javascript">PUNJAB</option>
-                                            <option value="php">DELHI</option>
-                                            <option value="java">GUJARAT</option>
-                                            <option value="golang">BIHAR</option>
-
+                                        <select class="form-control State" name="sid">
+                                            <option value="" selected>Select</option>
                                         </select>
                                     </div>
-
                                     <div class="form-group">
                                         <label for="inputText3" class="col-form-label">City Name</label>
-                                        <input id="inputText3" type="text" class="form-control" placeholder="City Name">
+                                        <input id="inputText3" type="text" class="form-control add-city" name="city" placeholder="City Name">
                                     </div>
-
-                                    <a href="#" class="btn btn-primary btn-block">Add City</a>
-
+                                    <button type="submit" class="btn btn-primary btn-block">Add City</button>
                                 </form>
                             </div>
 
@@ -156,47 +191,31 @@
                         <div class="card">
                             <h5 class="card-header">Update City</h5>
                             <div class="card-body">
-                                <form>
+                                <form  id="validate_form1" action="?controller=Address&function=update_city" method="post">
                                     <div class="form-group">
-                                        <label for="Category">Select Country</label><br>
-                                        <select class="form-control" name="languages" id="Category">
-                                            <option value="javascriptq" selected>Select</option>
-                                            <option value="javascript">INDIA</option>
-                                            <option value="php">JAPAN</option>
-                                            <option value="java">NEPAL</option>
-                                            <option value="golang">IRAN</option>
-
+                                        <input type="hidden" class="city-id" name="city_id">
+                                        <label for="country">Select Country</label><br>
+                                        <select class="form-control Country" name="cid" id="country_update">
+                                            <option value="" selected>Select</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Category">Select State</label><br>
-                                        <select class="form-control" name="languages" id="Category">
-                                            <option value="javascriptq" selected>Select</option>
-                                            <option value="javascript">PUNJAB</option>
-                                            <option value="php">DELHI</option>
-                                            <option value="java">GUJARAT</option>
-                                            <option value="golang">BIHAR</option>
-
+                                        <label for="state">Select State</label><br>
+                                        <select class="form-control State" name="sid" id="state_update">
+                                            <option value="" selected>Select</option>
                                         </select>
                                     </div>
-
                                     <div class="form-group">
                                         <label for="inputText3" class="col-form-label">City Name</label>
-                                        <input id="inputText3" type="text" class="form-control" placeholder="City Name">
+                                        <input id="inputText3" type="text" class="form-control city-name" name="city" placeholder="City Name">
                                     </div>
-
-                                    <a href="#" class="btn btn-primary btn-block">Update City</a>
-
+                                    <button type="submit"  class="btn btn-primary btn-block">Update City</button>
                                 </form>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>

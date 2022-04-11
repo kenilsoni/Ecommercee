@@ -34,119 +34,162 @@
             <!-- ============================================================== -->
             <!-- end pageheader  -->
             <!-- ============================================================== -->
-           
+
             <div class="ecommerce-widget">
-               
-                 <!--  country detail -->
-                 <!-- ============================================================== -->
+
+                <!--  country detail -->
+                <!-- ============================================================== -->
                 <div class="col-12 country_data">
-                    <div class="mb-2"><a href="#" class="btn btn-primary active add_countrybtn">Add Country</a></div>
+                    <div class="mb-2">
+                        <?php if (isset($_SESSION['addcountry_token'])) {
+                            if ($_SESSION['addcountry_token']) { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("add").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-success alert-dismissible fade show" id="add" role="alert">
+                                    Country added successfully!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                            <?php  } else { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("err").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
+                                    Sorry data is not added!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                        <?php }
+                            unset($_SESSION['addcountry_token']);
+                        } ?>
+
+                        <!-- delete alert -->
+                        <?php if (isset($_SESSION['deletecountry_token'])) {
+                            if ($_SESSION['deletecountry_token']) { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("delete").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-success alert-dismissible fade show" id="delete" role="alert">
+                                    Country deleted successfully!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                            <?php  } else { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("err").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
+                                    Sorry data is not deleted!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                        <?php }
+                            unset($_SESSION['deletecountry_token']);
+                        } ?>
+                        <!-- update alert -->
+
+                        <?php if (isset($_SESSION['updatecountry_token'])) {
+                            if ($_SESSION['updatecountry_token']) { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("update").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-success alert-dismissible fade show" id="update" role="alert">
+                                    Country updated successfully!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                            <?php  } else { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("err").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
+                                    Sorry data is not updated!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                        <?php }
+                            unset($_SESSION['updatecountry_token']);
+                        } ?>
+
+
+                        <a href="#" class="btn btn-primary active add_countrybtn">Add Country</a>
+                    </div>
                     <div class="card">
                         <h5 class="card-header">All Country</h5>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered first">
+                                <table class="table table-striped table-bordered first" id="country_table">
                                     <thead>
                                         <tr>
-
+                                            <th>ID</th>
                                             <th>Country Name</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
-                                        <tr>
-
-
-
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_country">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_country">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-
-                                            <td>id000004 </td>
-
-
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_country">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        
-
                                     </tbody>
-
-
                                 </table>
-
                             </div>
-
                         </div>
-
-
                     </div>
                 </div>
-                 <!-- ============================================================== -->
-                 <!-- end country detail  -->
-                 <!-- add country -->
-                  <div class="row d-flex justify-content-center add_country" style="display:none!important">
+                <!-- ============================================================== -->
+                <!-- end country detail  -->
+                <!-- add country -->
+                <div class="row d-flex justify-content-center add_country" style="display:none!important">
                     <div class="col-10">
                         <div class="card">
                             <h5 class="card-header">Add Country</h5>
                             <div class="card-body">
-                                <form>
-
+                                <form id="validate_form" action="?controller=Address&function=add_countrydata" method="post">
                                     <div class="form-group">
                                         <label for="inputText3" class="col-form-label">Country Name</label>
-                                        <input id="inputText3" type="text" class="form-control" placeholder="Country Name">
+                                        <input id="inputText3" type="text" class="form-control country-name" name="country" placeholder="Country Name">
                                     </div>
-
-                                    <a href="#" class="btn btn-primary btn-block">Add Country</a>
-
+                                    <button type="submit" class="btn btn-primary btn-block">Add Country</button>
                                 </form>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
-                 <!-- update country -->
-                 <div class="row d-flex justify-content-center update_country" style="display:none!important">
+                <!-- update country -->
+                <div class="row d-flex justify-content-center update_country" style="display:none!important">
                     <div class="col-10">
                         <div class="card">
                             <h5 class="card-header">Update Country</h5>
                             <div class="card-body">
-                                <form>
-
+                                <form id="validate_form1" action="?controller=Address&function=update_country" method="post">
                                     <div class="form-group">
+                                        <input type="hidden" class="update_id" name="id">
                                         <label for="inputText3" class="col-form-label">Country Name</label>
-                                        <input id="inputText3" type="text" class="form-control" placeholder="Country Name">
+                                        <input id="inputText3" type="text" class="form-control countryinput" name="country" placeholder="Country Name">
                                     </div>
-
-                                    <a href="#" class="btn btn-primary btn-block">Update Country</a>
-
+                                    <button type="submit" class="btn btn-primary btn-block">Update Country</button>
                                 </form>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
-
             </div>
-           
-
         </div>
     </div>
 </div>

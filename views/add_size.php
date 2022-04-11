@@ -39,12 +39,102 @@
                 <!--  Size Detail -->
                 <!-- ============================================================== -->
                 <div class="col-12 size_detail">
-                    <div class="mb-2"><a href="#" class="btn btn-primary active add_sizebtn">Add Size</a></div>
+                    <div class="mb-2">
+                        <?php if (isset($_SESSION['addsize_token'])) {
+                            if ($_SESSION['addsize_token']) { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("add").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-success alert-dismissible fade show" id="add" role="alert">
+                                    Size added successfully!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                            <?php  } else { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("err").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
+                                    Sorry data is not added!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                        <?php }
+                            unset($_SESSION['addsize_token']);
+                        } ?>
+
+                        <!-- delete alert -->
+                        <?php if (isset($_SESSION['deletesize_token'])) {
+                            if ($_SESSION['deletesize_token']) { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("delete").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-success alert-dismissible fade show" id="delete" role="alert">
+                                    Size deleted successfully!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                            <?php  } else { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("err").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
+                                    Sorry data is not deleted!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                        <?php }
+                            unset($_SESSION['deletesize_token']);
+                        } ?>
+                        <!-- update alert -->
+
+                        <?php if (isset($_SESSION['updatesize_token'])) {
+                            if ($_SESSION['updatesize_token']) { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("update").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-success alert-dismissible fade show" id="update" role="alert">
+                                    Size updated successfully!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                            <?php  } else { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("err").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
+                                    Sorry data is not updated!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                        <?php }
+                            unset($_SESSION['updatesize_token']);
+                        } ?>
+                        <a href="#" class="btn btn-primary active add_sizebtn">Add Size</a>
+                    </div>
                     <div class="card">
                         <h5 class="card-header">Add size</h5>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered first">
+                                <table class="table table-striped table-bordered first" id="size_detail">
                                     <thead>
                                         <tr>
                                             <th>Size Name</th>
@@ -53,17 +143,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>M</td>
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_size">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-                                            <td>L</td>
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_size">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-
 
                                     </tbody>
 
@@ -91,10 +170,10 @@
 
                                     <div class="form-group">
                                         <label for="inputText3" class="col-form-label">Size Name</label>
-                                        <input id="inputText3" type="text" class="form-control" placeholder="Size Name">
+                                        <input id="inputText3" type="text" class="form-control add-size" placeholder="Size Name">
                                     </div>
 
-                                    <a href="#" class="btn btn-primary btn-block">Add Size</a>
+                                    <button type="button" id="add_size" class="btn btn-primary btn-block">Add Size</button>
 
                                 </form>
                             </div>
@@ -118,11 +197,12 @@
                                 <form>
 
                                     <div class="form-group">
+                                        <input type="hidden" class="size-id">
                                         <label for="inputText3" class="col-form-label">Size Name</label>
-                                        <input id="inputText3" type="text" class="form-control" placeholder="Size Name">
+                                        <input id="inputText3" type="text" class="form-control size-name" placeholder="Size Name">
                                     </div>
 
-                                    <a href="#" class="btn btn-primary btn-block">Update Size</a>
+                                    <button type="button" id="update_sizebtn" class="btn btn-primary btn-block">Update Size</button>
 
                                 </form>
                             </div>

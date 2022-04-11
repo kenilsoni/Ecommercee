@@ -39,45 +39,115 @@
 
                 <!--  Color Details  -->
                 <div class="col-12 color_detail">
-                    <div class="mb-2"><a href="#" class="btn btn-primary active add_colorbtn">Add Color</a></div>
+                    <div class="mb-2">
+                        <?php if (isset($_SESSION['addcolor_token'])) {
+                            if ($_SESSION['addcolor_token']) { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("add").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-success alert-dismissible fade show" id="add" role="alert">
+                                    Color added successfully!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                            <?php  } else { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("err").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
+                                    Sorry data is not added!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                        <?php }
+                            unset($_SESSION['addcolor_token']);
+                        } ?>
+
+                        <!-- delete alert -->
+                        <?php if (isset($_SESSION['deletecolor_token'])) {
+                            if ($_SESSION['deletecolor_token']) { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("delete").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-success alert-dismissible fade show" id="delete" role="alert">
+                                    Color deleted successfully!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                            <?php  } else { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("err").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
+                                    Sorry data is not deleted!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                        <?php }
+                            unset($_SESSION['deletecolor_token']);
+                        } ?>
+                        <!-- update alert -->
+
+                        <?php if (isset($_SESSION['updatecolor_token'])) {
+                            if ($_SESSION['updatecolor_token']) { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("update").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-success alert-dismissible fade show" id="update" role="alert">
+                                    Color updated successfully!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                            <?php  } else { ?>
+                                <script>
+                                    setTimeout(() => {
+                                        document.getElementById("err").style.display = 'none';
+                                    }, 4000);
+                                </script>
+                                <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
+                                    Sorry data is not updated!!.
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </a>
+                                </div>
+                        <?php }
+                            unset($_SESSION['updatecolor_token']);
+                        } ?>
+                        <a href="#" class="btn btn-primary active add_colorbtn">Add Color</a>
+                    </div>
                     <div class="card">
                         <h5 class="card-header">All Color</h5>
                         <div class="card-body">
-
-
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered first">
+                                <table class="table table-striped table-bordered first" id="color_detail">
                                     <thead>
                                         <tr>
+                                            <th>ID</th>
                                             <th>Color Name</th>
-
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>RED</td>
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_color">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-                                        <tr>
-
-                                            <td>BLUE</td>
-
-                                            <td><a href="#" class="btn btn-rounded btn-primary edit_color">Edit</a>&nbsp;<a href="#" class="btn btn-rounded btn-danger">Delete</a> </td>
-                                        </tr>
-
-
                                     </tbody>
-
-
                                 </table>
-
-
                             </div>
                         </div>
-
                     </div>
-
                 </div>
                 <!-- End Color Details  -->
                 <!-- Add Color  -->
@@ -88,23 +158,16 @@
                         <div class="card">
                             <h5 class="card-header">Add Color</h5>
                             <div class="card-body">
-                                <form>
-
+                                <form id="validate_form" action="?controller=Product&function=add_colordata" method="post">
                                     <div class="form-group">
                                         <label for="inputText3" class="col-form-label">Color Name</label>
-                                        <input id="inputText3" type="text" class="form-control" placeholder="Color Name">
+                                        <input id="inputText3" type="text" class="form-control add-color" name="color_name" placeholder="Color Name">
                                     </div>
-
-                                    <a href="#" class="btn btn-primary btn-block">Add Color</a>
-
+                                    <button type="submit" class="btn btn-primary btn-block">Add Color</button>
                                 </form>
                             </div>
-
                         </div>
-
                     </div>
-
-
                 </div>
                 <!-- ============================================================== -->
                 <!-- end Add Color  -->
@@ -116,32 +179,21 @@
                         <div class="card">
                             <h5 class="card-header">Update Color</h5>
                             <div class="card-body">
-                                <form>
-
+                                <form id="validate_form1" action="?controller=Product&function=update_color" method="post">
                                     <div class="form-group">
+                                        <input type="hidden" class="color-id" name="color_id">
                                         <label for="inputText3" class="col-form-label">Color Name</label>
-                                        <input id="inputText3" type="text" class="form-control" placeholder="Color Name">
+                                        <input id="inputText3" type="text" class="form-control color-name" name="color_name" placeholder="Color Name">
                                     </div>
-
-                                    <a href="#" class="btn btn-primary btn-block">Update Color</a>
-
+                                    <button type="submit" class="btn btn-primary btn-block">Update Color</button>
                                 </form>
                             </div>
-
                         </div>
-
                     </div>
-
-
                 </div>
                 <!-- ============================================================== -->
                 <!-- end Update Color  -->
-
-
             </div>
-
-
-
         </div>
     </div>
 </div>

@@ -9,6 +9,7 @@
 <!-- ============================================================== -->
 <!-- wrapper  -->
 <!-- ============================================================== -->
+
 <div class="dashboard-wrapper">
     <div class="dashboard-ecommerce">
         <div class="container-fluid dashboard-content ">
@@ -23,8 +24,8 @@
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="?controller=Admin&function=all_subcategory" class="breadcrumb-link">Sub-Category</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Add Sub-Category </li>
+                                    <li class="breadcrumb-item"><a href="?controller=Admin&function=all_subcategory" class="breadcrumb-link">Sub Category</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Add SubCategory </li>
                                 </ol>
                             </nav>
                         </div>
@@ -41,9 +42,9 @@
                     <div class="col-10">
 
                         <div class="card">
-                            <h5 class="card-header">Add Sub-Category</h5>
+                            <h5 class="card-header">Add SubCategory</h5>
                             <div class="card-body">
-                                <form id="validate_form">
+                                <form id="validate_form" action="?controller=SubCategory&function=addsubcategory" method="post">
                                     <div class="form-group">
                                         <label for="Category">Select Category</label><br>
                                         <select class="form-control" name="Category" id="Category">
@@ -51,11 +52,11 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText3" class="col-form-label">Sub-Category Name</label>
+                                        <label for="inputText3" class="col-form-label">SubCategory Name</label>
                                         <input id="inputText3" name="subcategory_name" type="text" class="form-control" placeholder="Name">
                                     </div>
 
-                                    <button type="button" id="add_subcategory" class="btn btn-primary btn-block">Add Sub-Category</button>
+                                    <button type="submit" class="btn btn-primary btn-block">Add SubCategory</button>
 
                                 </form>
                             </div>

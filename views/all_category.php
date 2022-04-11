@@ -142,24 +142,16 @@
                                 <table class="table table-striped table-bordered first" id="category_table">
                                     <thead>
                                         <tr>
-
+                                            <th>ID</th>
                                             <th>Category Name</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-
-
                                     </tbody>
-
-
                                 </table>
-
                             </div>
-
                         </div>
-
-
                     </div>
                 </div>
                 <!-- ============================================================== -->
@@ -170,15 +162,15 @@
                         <div class="card">
                             <h5 class="card-header">Update Category</h5>
                             <div class="card-body">
-                                <form id="validate_form">
+                                <form id="validate_form" action="?controller=Category&function=update_category" method="post">
 
                                     <div class="form-group">
                                         <label for="inputText3" class="col-form-label">Category Name</label>
-                                        <input type="hidden" class="update_id">
+                                        <input type="hidden" class="update_id" name="update_id">
                                         <input id="inputText3" type="text" class="form-control category_input" name="category_name" placeholder="Category Name">
                                     </div>
 
-                                    <button type="button" id="update_categorybtn" class="btn btn-primary btn-block">Update Category</button>
+                                    <button type="submit" class="btn btn-primary btn-block">Update Category</button>
 
                                 </form>
                             </div>

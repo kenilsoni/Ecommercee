@@ -35,14 +35,14 @@ class CategoryController
                 if ($success == 1) {
 
                     $_SESSION['addcategory_token'] = true;
-                    return 1;
+                    header("location:?controller=Category&function=all_category");
                 } else {
                     $_SESSION['addcategory_token'] = false;
-                    return 0;
+                    header("location:?controller=Category&function=all_category");
                 }
             } else {
                 $_SESSION['addcategory_token'] = false;
-                return 0;
+                header("location:?controller=Category&function=all_category");
             }
         }
     }
@@ -58,22 +58,22 @@ class CategoryController
                 if ($success == 1) {
 
                     $_SESSION['deletecategory_token'] = true;
-                    return 1;
+                    
                 } else {
                     $_SESSION['deletecategory_token'] = false;
-                    return 0;
+                    
                 }
             } else {
                 $_SESSION['deletecategory_token'] = false;
-                return 0;
+                
             }
         }
     }
     public function update_category()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $id = $_POST['id'];
-            $name_update = $this->test_input($_POST['name']);
+            $id = $_POST['update_id'];
+            $name_update = $this->test_input($_POST['category_name']);
             session_start();
             if ($name_update != "") {
                 $data = array(
@@ -85,14 +85,14 @@ class CategoryController
                 if ($success == 1) {
 
                     $_SESSION['updatecategory_token'] = true;
-                    return 1;
+                    header("location:?controller=Category&function=all_category");
                 } else {
                     $_SESSION['updatecategory_token'] = false;
-                    return 0;
+                    header("location:?controller=Category&function=all_category");
                 }
             } else {
                 $_SESSION['updatecategory_token'] = false;
-                return 0;
+                header("location:?controller=Category&function=all_category");
             }
         }
     }

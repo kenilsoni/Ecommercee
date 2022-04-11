@@ -10,11 +10,10 @@
 <!-- wrapper  -->
 <!-- ============================================================== -->
 <style>
-    .error{
-        color:red;
+    .error {
+        color: red;
     }
 </style>
-
 <div class="dashboard-wrapper">
     <div class="dashboard-ecommerce">
         <div class="container-fluid dashboard-content ">
@@ -30,7 +29,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="?controller=Admin&function=all_category" class="breadcrumb-link">Category</a></li>
-                                    <li class="breadcrumb-item active "  aria-current="page">Add Category </li>
+                                    <li class="breadcrumb-item active " aria-current="page">Add Category </li>
                                 </ol>
                             </nav>
                         </div>
@@ -48,31 +47,23 @@
                         <div class="card">
                             <h5 class="card-header">Add Category</h5>
                             <div class="card-body">
-                                <form id="validate_form">
-
+                                <form id="validate_form" action="?controller=Category&function=addcategory" method="post">
                                     <div class="form-group">
                                         <label for="inputText3" class="col-form-label">Category Name</label>
                                         <input id="inputText3" type="text" class="form-control category_name" name="category_name" placeholder="Category Name">
                                     </div>
-
-                                    <button type="button" id="add_category" class="btn btn-primary btn-block">Add Category</button>
-
+                                    <button type="submit" id="add_category" class="btn btn-primary btn-block">Add Category</button>
                                 </form>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
             <!-- ============================================================== -->
             <!-- end Add category  -->
-
         </div>
     </div>
 </div>
 </div>
-
 <?php include("footer.php"); ?>
-
 <script src="./assets/js/category.js"></script>
