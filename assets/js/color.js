@@ -8,7 +8,74 @@ $(document).ready(function () {
         $(".color_detail").hide();
         $(".update_color").css("display", "block");
         $(".page_name").text("Update Color");
+
+        var color_id = $(this).closest('tr').find(".color_id").val();
+        var color = $(this).closest('tr').find(".name_table").text().trim();
+
+        $(".color-id").val(color_id);
+        $(".color-name").val(color);
     })
 
+    function onload() {
+        $.ajax({
+            type: "GET",
+            url: "?controller=Product&function=getcolor",
+            datatype: "json",
+            success: function (data) {
+                obj = JSON.parse(data);
+                if (typeof obj === "object") {
+                    var len = obj.length;
+                    var mytable = $('#color_detail').DataTable();
+                    mytable.clear().draw();
+                    for (var i = 0; i < len; i++) {
+                        var number = i + 1;
+                        mytable.row.add($(`
+                     <tr>
+                     <input type=hidden value="${obj[i].ID}" class="color_id">  
+                     <td>${number}</td>              
+                     <td class="name_table">${obj[i].Product_Color} </td>                    
+                     <td><button type="button" class="btn btn-rounded btn-primary edit_color">Edit</button>&nbsp;<button type="button" class="btn btn-rounded btn-danger delete_color">Delete</button> </td>
+                 </tr>
+                     `)).draw();
+
+                    }
+
+                }
+
+            }
+        })
+    }
+    onload();
+
+    $(document).on("click", ".delete_color", function () {
+        var color_id = $(this).closest('tr').find(".color_id").val();
+        if (confirm("Are you really want to delete data")) {
+            $.ajax({
+                type: "POST",
+                url: "?controller=Product&function=delete_color",
+                data: { id: color_id },
+                datatype: "json",
+
+                success: function () {
+                    window.location.href = "?controller=Product&function=add_color";
+                }
+            })
+        }
+
+    })
+    $("#validate_form").validate({
+        rules: {
+            color_name: {
+                required: true,
+            },
+        }
+    });
+    $("#validate_form1").validate({
+        rules: {
+            color_name: {
+                required: true,
+            },
+        }
+    });
 
 })
