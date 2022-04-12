@@ -137,24 +137,17 @@
                                 <table class="table table-striped table-bordered first" id="size_detail">
                                     <thead>
                                         <tr>
+                                            <th>ID</th>
                                             <th>Size Name</th>
-
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-
                                     </tbody>
-
-
                                 </table>
-
-
                             </div>
                         </div>
-
                     </div>
-
                 </div>
                 <!-- ============================================================== -->
                 <!-- end Size detail  -->
@@ -166,23 +159,16 @@
                         <div class="card">
                             <h5 class="card-header">Add Size</h5>
                             <div class="card-body">
-                                <form>
-
+                                <form id="validate_form" action="?controller=Product&function=add_sizedata" method="post">
                                     <div class="form-group">
                                         <label for="inputText3" class="col-form-label">Size Name</label>
-                                        <input id="inputText3" type="text" class="form-control add-size" placeholder="Size Name">
+                                        <input id="inputText3" type="text" class="form-control add-size" name="size" placeholder="Size Name">
                                     </div>
-
-                                    <button type="button" id="add_size" class="btn btn-primary btn-block">Add Size</button>
-
+                                    <button type="submit" class="btn btn-primary btn-block">Add Size</button>
                                 </form>
                             </div>
-
                         </div>
-
                     </div>
-
-
                 </div>
                 <!-- ============================================================== -->
                 <!-- end Add Size  -->
@@ -194,35 +180,22 @@
                         <div class="card">
                             <h5 class="card-header">Update Size</h5>
                             <div class="card-body">
-                                <form>
-
+                                <form id="validate_form1" action="?controller=Product&function=update_size" method="post">
                                     <div class="form-group">
-                                        <input type="hidden" class="size-id">
+                                        <input type="hidden" class="size-id" name="size_id">
                                         <label for="inputText3" class="col-form-label">Size Name</label>
-                                        <input id="inputText3" type="text" class="form-control size-name" placeholder="Size Name">
+                                        <input id="inputText3" type="text" class="form-control size-name" name="size" placeholder="Size Name">
                                     </div>
-
-                                    <button type="button" id="update_sizebtn" class="btn btn-primary btn-block">Update Size</button>
-
+                                    <button type="submit" class="btn btn-primary btn-block">Update Size</button>
                                 </form>
                             </div>
-
                         </div>
-
                     </div>
-
-
                 </div>
                 <!-- ============================================================== -->
                 <!-- end Update Color  -->
-
-
-
             </div>
-
         </div>
-
-
     </div>
 </div>
 </div>

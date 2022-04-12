@@ -138,7 +138,7 @@
                                 <table class="table table-striped table-bordered first" id="city_table">
                                     <thead>
                                         <tr>
-                                        <th>ID</th>
+                                            <th>ID</th>
                                             <th>Country Name</th>
                                             <th>State Name </th>
                                             <th>City Name</th>
@@ -191,7 +191,7 @@
                         <div class="card">
                             <h5 class="card-header">Update City</h5>
                             <div class="card-body">
-                                <form  id="validate_form1" action="?controller=Address&function=update_city" method="post">
+                                <form id="validate_form1" action="?controller=Address&function=update_city" method="post">
                                     <div class="form-group">
                                         <input type="hidden" class="city-id" name="city_id">
                                         <label for="country">Select Country</label><br>
@@ -209,7 +209,7 @@
                                         <label for="inputText3" class="col-form-label">City Name</label>
                                         <input id="inputText3" type="text" class="form-control city-name" name="city" placeholder="City Name">
                                     </div>
-                                    <button type="submit"  class="btn btn-primary btn-block">Update City</button>
+                                    <button type="submit" class="btn btn-primary btn-block">Update City</button>
                                 </form>
                             </div>
                         </div>

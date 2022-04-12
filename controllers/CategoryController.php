@@ -29,9 +29,10 @@ class CategoryController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $name = $this->test_input($_POST['category_name']);
+            $desc = $this->test_input($_POST['desc_category']);
             session_start();
             if ($name != "") {
-                $success = $this->model->addcategory_data($name);
+                $success = $this->model->addcategory_data($name, $desc);
                 if ($success == 1) {
 
                     $_SESSION['addcategory_token'] = true;
@@ -46,6 +47,14 @@ class CategoryController
             }
         }
     }
+    public function getdesc()
+    {
+        $id = $_POST['id'];
+        $success = $this->model->desc_data($id);
+        if (count($success) > 0) {
+            echo json_encode($success);
+        }
+    }
     public function deletecategory()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -58,14 +67,11 @@ class CategoryController
                 if ($success == 1) {
 
                     $_SESSION['deletecategory_token'] = true;
-                    
                 } else {
                     $_SESSION['deletecategory_token'] = false;
-                    
                 }
             } else {
                 $_SESSION['deletecategory_token'] = false;
-                
             }
         }
     }
@@ -74,11 +80,13 @@ class CategoryController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['update_id'];
             $name_update = $this->test_input($_POST['category_name']);
+            $desc = $this->test_input($_POST['desc_category']);
             session_start();
             if ($name_update != "") {
                 $data = array(
                     'ID' => $id,
-                    'Category_Name' => $name_update
+                    'Category_Name' => $name_update,
+                    'desc_category'=>$desc
                 );
                 $success = $this->model->update_category($data);
 

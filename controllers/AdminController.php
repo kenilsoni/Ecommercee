@@ -77,4 +77,22 @@ class AdminController
     {
         include("./views/add_size.php");
     }
+    public function gettotal_user()
+    {
+        $success = $this->model->getuser_count();
+        if ($success) {
+            echo json_encode($success);
+        } else {
+            echo json_encode("empty");
+        }
+    }
+    public function gettotal_product()
+    {
+        $success = $this->model->getproduct_count();
+        if ($success) {
+            echo json_encode($success);
+        } else {
+            echo json_encode("empty");
+        }
+    }
 }

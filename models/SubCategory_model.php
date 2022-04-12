@@ -28,7 +28,7 @@ class SubCategoryModel
     }
     public function addsubcategory_data($data)
     {
-        $sql = "INSERT INTO `product_subcategory`( `Category_ID`,`Subcategory_Name`) VALUES (:ID,:Subcategory_Name)";
+        $sql = "INSERT INTO `product_subcategory`( `Category_ID`,`Subcategory_Name`,`Subcategory_desc`) VALUES (:ID,:Subcategory_Name,:desc_subcategory)";
         $stmt = $this->conn->prepare($sql);
         $success = $stmt->execute($data);
         return $success;
@@ -42,9 +42,17 @@ class SubCategoryModel
     }
     public function update_subcategory($data)
     {
-        $sql = "UPDATE product_subcategory SET Subcategory_Name=:Subcategory_Name,Category_ID=:Category_ID WHERE ID=:ID";
+        $sql = "UPDATE product_subcategory SET Subcategory_Name=:Subcategory_Name,Category_ID=:Category_ID,Subcategory_desc=:desc_subcategory WHERE ID=:ID";
         $stmt = $this->conn->prepare($sql);
         $success = $stmt->execute($data);
+        return $success;
+    }
+    public function desc_data($id)
+    {
+        $sql = "SELECT Subcategory_desc FROM product_subcategory WHERE ID=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id]);
+        $success = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $success;
     }
 }

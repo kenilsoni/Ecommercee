@@ -55,6 +55,10 @@
                                         <label for="inputText3" class="col-form-label">SubCategory Name</label>
                                         <input id="inputText3" name="subcategory_name" type="text" class="form-control" placeholder="Name">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Description</label>
+                                        <textarea class="form-control" name="desc_subcategory" id="subcategory_desc" rows="3" id="exampleFormControlTextarea1"  placeholder="Description"></textarea>
+                                    </div>
 
                                     <button type="submit" class="btn btn-primary btn-block">Add SubCategory</button>
 

@@ -163,6 +163,10 @@
                                         <label for="inputText3" class="col-form-label">Color Name</label>
                                         <input id="inputText3" type="text" class="form-control add-color" name="color_name" placeholder="Color Name">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="inputText3" class="col-form-label">Select Color</label>
+                                        <input id="inputText3" type="color" class="form-control color-code" name="color_code" >
+                                    </div>
                                     <button type="submit" class="btn btn-primary btn-block">Add Color</button>
                                 </form>
                             </div>
@@ -184,6 +188,10 @@
                                         <input type="hidden" class="color-id" name="color_id">
                                         <label for="inputText3" class="col-form-label">Color Name</label>
                                         <input id="inputText3" type="text" class="form-control color-name" name="color_name" placeholder="Color Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputText3" class="col-form-label">Select Color</label>
+                                        <input id="inputText3" type="color" class="form-control color-code" name="color_code">
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-block">Update Color</button>
                                 </form>

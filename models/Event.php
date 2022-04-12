@@ -23,4 +23,20 @@ class EventModel
         $success = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $success;
     }
+    public function getuser_count()
+    {
+        $sql = "SELECT count(*) AS TOTAL_USER FROM user";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $success = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $success;
+    }
+    public function getproduct_count()
+    {
+        $sql = "SELECT count(*) AS TOTAL_PRODUCT FROM product";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $success = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $success;
+    }
 }

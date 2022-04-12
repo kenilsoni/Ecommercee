@@ -52,7 +52,11 @@
                                         <label for="inputText3" class="col-form-label">Category Name</label>
                                         <input id="inputText3" type="text" class="form-control category_name" name="category_name" placeholder="Category Name">
                                     </div>
-                                    <button type="submit" id="add_category" class="btn btn-primary btn-block">Add Category</button>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Description</label>
+                                        <textarea class="form-control" name="desc_category" id="category_desc" rows="3" id="exampleFormControlTextarea1" placeholder="Description"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-block">Add Category</button>
                                 </form>
                             </div>
                         </div>

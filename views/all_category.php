@@ -95,7 +95,7 @@
                                     }, 4000);
                                 </script>
                                 <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
-                                    Sorry data is not deleted!!.
+                                    Delete Subcategory First!!.
                                     <a href="#" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </a>
@@ -168,6 +168,10 @@
                                         <label for="inputText3" class="col-form-label">Category Name</label>
                                         <input type="hidden" class="update_id" name="update_id">
                                         <input id="inputText3" type="text" class="form-control category_input" name="category_name" placeholder="Category Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Description</label>
+                                        <textarea class="form-control" name="desc_category" id="category_desc" rows="3" id="exampleFormControlTextarea1"  placeholder="Description"></textarea>
                                     </div>
 
                                     <button type="submit" class="btn btn-primary btn-block">Update Category</button>

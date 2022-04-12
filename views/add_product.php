@@ -13,10 +13,11 @@
     .error {
         color: red;
     }
-    .imgGallery img{
+
+    .imgGallery img {
         width: 100px;
         height: 100px;
-        margin-right:20px;
+        margin-right: 20px;
     }
 </style>
 <div class="dashboard-wrapper">
@@ -86,6 +87,15 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
+                                        <label class="col-form-label">IsTrending</label>
+                                        <div>
+                                            <div class="switch-button switch-button-success">
+                                                <input type="checkbox" name="istrend" id="switch16"><span>
+                                                    <label for="switch16"></label></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="product_color">Product Color</label><br>
                                         <select class="form-control product_color" id="product_color" name="product_color">
                                             <option value="" selected>Select</option>
@@ -102,15 +112,17 @@
 
                                     <div class="custom-file mb-3">
 
-                                        <input type="file" name="files_image[]" class="custom-file-input" id="files_image"  multiple>
+                                        <input type="file" name="files_image[]" accept="image/*" class="custom-file-input" id="files_image" multiple>
                                         <label class="custom-file-label form-control" for="chooseFile">Choose Image</label>
-                                        
+
                                     </div>
-                                    <div class="imgGallery mb-2">
-                                        <!-- image preview -->
+                                    <div class="mb-2">
+                                        <div class="imgGallery" style="width:100px;">
+                                            <!-- image preview -->
+                                        </div>
                                     </div>
                                     <!-- <input type="hidden" class="file_name" name="file_name"> -->
-                                    <button type="submit"  class="btn btn-primary btn-block">Add Product</button>
+                                    <button type="submit" class="btn btn-primary btn-block">Add Product</button>
 
                                 </form>
                             </div>

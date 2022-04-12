@@ -87,7 +87,7 @@
                             }, 4000);
                         </script>
                         <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
-                            Sorry data is not deleted!!.
+                            SubCategory already assigned to the product!!.
                             <a href="#" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </a>
@@ -165,17 +165,17 @@
                                         <label for="Category">Category</label><br>
                                         <select class="form-control category_id" name="Category" id="Category">
                                             <option value="" selected>Select</option>
-
-
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText3">Sub Category</label><br>
                                         <input id="inputText3" type="text" class="form-control subcategory_input" name="subcategory_name" placeholder="SubCategory Name">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Description</label>
+                                        <textarea class="form-control" name="desc_subcategory" id="subcategory_desc" rows="3" id="exampleFormControlTextarea1" placeholder="Description"></textarea>
+                                    </div>
                                     <button type="submit" class="btn btn-primary btn-block">Update SubCategory</button>
-
-
                                 </form>
                             </div>
 

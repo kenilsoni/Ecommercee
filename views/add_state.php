@@ -91,7 +91,7 @@
                                     }, 4000);
                                 </script>
                                 <div class="alert alert-danger alert-dismissible fade show" id="err" role="alert">
-                                    Sorry data is not deleted!!.
+                                    Delete City First!!.
                                     <a href="#" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </a>

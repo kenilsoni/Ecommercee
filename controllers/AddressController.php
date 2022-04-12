@@ -88,9 +88,9 @@ class AddressController
             if ($id != "") {
                 $success = $this->model->delete_country($id);
                 if ($success == 1) {
-                    $_SESSION['deletecountry_token'] = true;                  
+                    $_SESSION['deletecountry_token'] = true;
                 } else {
-                    $_SESSION['deletecountry_token'] = false;                 
+                    $_SESSION['deletecountry_token'] = false;
                 }
             } else {
                 $_SESSION['deletecountry_token'] = false;
@@ -240,11 +240,11 @@ class AddressController
     }
     public function getstatebyid()
     {
-        $id=$_POST['id'];
+        $id = $_POST['id'];
         $success = $this->model->state_databyid($id);
         if (count($success) > 0) {
             echo json_encode($success);
-        }else{
+        } else {
             echo json_encode('empty');
         }
     }
@@ -258,12 +258,12 @@ class AddressController
             if ($id != "") {
                 $success = $this->model->delete_city($id);
                 if ($success == 1) {
-                    $_SESSION['deletecity_token'] = true;                   
+                    $_SESSION['deletecity_token'] = true;
                 } else {
-                    $_SESSION['deletecity_token'] = false;                  
+                    $_SESSION['deletecity_token'] = false;
                 }
             } else {
-                $_SESSION['deletecity_token'] = false;              
+                $_SESSION['deletecity_token'] = false;
             }
         }
     }

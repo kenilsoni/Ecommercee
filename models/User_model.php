@@ -21,31 +21,25 @@ class UserModel
         FROM user as u";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
+        $success = $stmt->fetchAll(PDO::FETCH_ASSOC);       
+        return $success;
+    }
+    public function user_detail($id)
+    {
+        $sql = "SELECT *,CONCAT(u.FirstName,' ',u.LastName) as Fullname
+        FROM user as u WHERE ID=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id]);
         $success = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $data_main=[];
-        foreach ($success as $data) {
-            $userid = $data['ID'];
-            $sql = "SELECT Street,Country,City,State FROM user_address as uadd LEFT JOIN country as cty ON uadd.Country_ID=cty.ID LEFT JOIN city as cy ON uadd.City_ID=cy.ID LEFT JOIN state as st ON uadd.State_ID=st.ID
-            WHERE uadd.User_ID=$userid";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute();
-            $data2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            $final=array_merge(array($data),$data2);
-            array_push($data_main, $final);
-
-        }
-       
-        return $data_main;
+        return $success;
+    }
+    public function get_address($userid){
+        $sql = "SELECT Street,Country,City,State FROM user_address as uadd LEFT JOIN country as cty ON uadd.Country_ID=cty.ID LEFT JOIN city as cy ON uadd.City_ID=cy.ID LEFT JOIN state as st ON uadd.State_ID=st.ID
+        WHERE uadd.User_ID=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$userid]);
+        $success = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $success;
     }
 }
 
-// $sql = "SELECT Street,CONCAT(u.FirstName,' ',u.LastName) as Fullname,Email,Phone
-// FROM user as u
-// LEFT JOIN user_address as uadd
-// ON u.ID = uadd.User_ID";
-// $stmt = $this->conn->prepare($sql);
-// $stmt->execute();
-// $success = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// return $success;

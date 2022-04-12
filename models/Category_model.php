@@ -23,11 +23,11 @@ class CategoryModel
         $success = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $success;
     }
-    public function addcategory_data($name)
+    public function addcategory_data($name, $desc)
     {
-        $sql = "INSERT INTO `product_category`( `Category_Name`) VALUES (?)";
+        $sql = "INSERT INTO `product_category`( `Category_Name`,`Category_desc`) VALUES (?,?)";
         $stmt = $this->conn->prepare($sql);
-        $success = $stmt->execute([$name]);
+        $success = $stmt->execute([$name, $desc]);
         return $success;
     }
     public function delete_category($id)
@@ -39,9 +39,17 @@ class CategoryModel
     }
     public function update_category($data)
     {
-        $sql = "UPDATE `product_category` SET `Category_Name`=:Category_Name WHERE `ID`=:ID";
+        $sql = "UPDATE `product_category` SET `Category_Name`=:Category_Name,`Category_desc`=:desc_category WHERE `ID`=:ID";
         $stmt = $this->conn->prepare($sql);
         $success = $stmt->execute($data);
+        return $success;
+    }
+    public function desc_data($id)
+    {
+        $sql = "SELECT Category_desc FROM product_category WHERE ID=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id]);
+        $success = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $success;
     }
 }
