@@ -1,27 +1,33 @@
 $(document).ready(function () {
-    
-   
+
+
     $(function () {
         // Multiple images preview with JavaScript
         var multiImgPreview = function (input, imgPreviewPlaceholder) {
-          if (input.files) {
-            var filesAmount = input.files.length;
-            for (i = 0; i < filesAmount; i++) {
-            var extension = input.files[i].name.split('.').pop().toLowerCase();
-            if(extension === 'jpg' || extension === 'png' || extension === 'jpeg' ){
-              var reader = new FileReader();
-              reader.onload = function (event) {
-                $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
-             
-              }
-              reader.readAsDataURL(input.files[i]);}
+            if (input.files) {
+                var filesAmount = input.files.length;
+                for (i = 0; i < filesAmount; i++) {
+                    var extension = input.files[i].name.split('.').pop().toLowerCase();
+                    if (extension === 'jpg' || extension === 'png' || extension === 'jpeg') {
+                        var reader = new FileReader();
+                        reader.onload = function (event) {
+                            $($.parseHTML('<img>')).attr('src', event.target.result).attr('class', 'image').appendTo(imgPreviewPlaceholder);
+                            // $(imgPreviewPlaceholder).append(`<button type="button"  class="btn btn-danger delete_image" >Delete</button>`);
+                        }
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
             }
-          }
         };
         $('#files_image').on('change', function () {
-          multiImgPreview(this, 'div.imgGallery');
+            multiImgPreview(this, 'div.imgGallery');
         });
-      });
+    });
+    //   $(document).on('click','.delete_image',function(){
+    //       var id=$(this).remove();
+    //       console.log(id);
+    //   })
+
     function onload() {
         $.ajax({
             type: "GET",
@@ -58,7 +64,7 @@ $(document).ready(function () {
             }
         })
     }
-    function getcategory(){
+    function getcategory() {
         $.ajax({
             type: "GET",
             url: "?controller=Category&function=getcategory",
@@ -69,13 +75,13 @@ $(document).ready(function () {
                     var len = obj.length;
                     // $("#Category").append('');
                     for (var i = 0; i < len; i++) {
-                        
-                    $("#Category").append(`
+
+                        $("#Category").append(`
                  
                     <option value="${obj[i].ID}">${obj[i].Category_Name}</option>
 
                     `);
-                     
+
 
                     }
 
@@ -84,7 +90,7 @@ $(document).ready(function () {
             }
         })
     }
-   
+
     function getsize() {
         $.ajax({
             type: "GET",
@@ -94,7 +100,7 @@ $(document).ready(function () {
                 obj = JSON.parse(data);
                 if (typeof obj === "object") {
                     var len = obj.length;
-                   
+
                     for (var i = 0; i < len; i++) {
                         $(".product_size").append(`
                  
@@ -118,7 +124,7 @@ $(document).ready(function () {
                 obj = JSON.parse(data);
                 if (typeof obj === "object") {
                     var len = obj.length;
-                   
+
                     for (var i = 0; i < len; i++) {
                         $(".product_color").append(`
                  
@@ -134,40 +140,41 @@ $(document).ready(function () {
         })
     }
     onload();
-   
+
     getcategory();
     getsize();
     getcolor();
     $(document).on('change', '.product_category', function () {
-       var id=$(".product_category option:selected").val();
-       
-       if( id != ''){
-       
-       $.ajax({
-            type: "POST",
-            url: "?controller=Product&function=getsubcategory_id",
-            data:{id:id},
-            datatype: "json",
-            success: function (data) {
-                obj = JSON.parse(data);
-                console.log(obj);
-                if (typeof obj === "object") {
-                    var len = obj.length;
-                    $(".product_subcategory").empty();
-                    $(".product_subcategory").append(`<option value="" selected>Select</option>`);
-                    for (var i = 0; i < len; i++) {
-                        $(".product_subcategory").append(`
+        var id = $(".product_category option:selected").val();
+
+        if (id != '') {
+
+            $.ajax({
+                type: "POST",
+                url: "?controller=Product&function=getsubcategory_id",
+                data: { id: id },
+                datatype: "json",
+                success: function (data) {
+                    obj = JSON.parse(data);
+                    console.log(obj);
+                    if (typeof obj === "object") {
+                        var len = obj.length;
+                        $(".product_subcategory").empty();
+                        $(".product_subcategory").append(`<option value="" selected>Select</option>`);
+                        for (var i = 0; i < len; i++) {
+                            $(".product_subcategory").append(`
                         
                         <option value="${obj[i].ID}">${obj[i].Subcategory_Name}</option>
     
                         `);
-    
+
+                        }
+
                     }
-    
+
                 }
-    
-            }
-        })}else{
+            })
+        } else {
             $(".product_subcategory").empty();
             $(".product_subcategory").append(`<option value="" selected>Select</option>`);
         }
@@ -183,63 +190,86 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: "?controller=Product&function=getproductby_id",
-            data:{id:productid},
+            data: { id: productid },
             datatype: "json",
             success: function (data) {
                 obj = JSON.parse(data);
                 if (typeof obj === "object") {
                     var len = obj.length;
                     for (var i = 0; i < len; i++) {
-                       
                         $(".product_name").val(obj[i][0].Product_Name);
-                        $(".product_desc").val(obj[i][0].Description);
-                        $(".product_price").val(obj[i][0].Price);
+                        $(".product_desc").val(obj[i][0].Product_Description);
+                        $(".product_price").val(obj[i][0].Product_Price);
                         $(".product_quantity").val(obj[i][0].Product_Quantity);
                         $(".product_category").val(obj[i][0].Category_ID);
-                        $(".product_subcategory").val(obj[i][0].SubCategory_ID);
                         $(".product_color").val(obj[i][0].Product_Color_ID);
                         $(".product_size").val(obj[i][0].Product_Size);
-                        
-                       
-
+                        getsubcategory_product(obj[i][0].Category_ID, obj[i][0].Subcategory_ID)
+                        if (obj[i][0].IsTrending == 1) {
+                            $("#switch16").attr('checked', true);
+                        }
                     }
-
                 }
 
             }
         })
+
+
 
     })
-    $(document).on("click", "#add_product", function () {
-    //   var img=$(".file_name").text().trim();
-    //   console.log(img)
-    
-      $.ajax({
-            type: "POST",
-            url: "?controller=Product&function=add_productdata",
-            data: $("#validate_form").serialize(),
-            datatype: "json",
-            success: function (data) {
-                if (data == 1) {
+    function getsubcategory_product(id, sid) {
+        if (id != '') {
 
-                    // window.location.href = "?controller=Product&function=add_product";
+            $.ajax({
+                type: "POST",
+                url: "?controller=Product&function=getsubcategory_id",
+                data: { id: id },
+                datatype: "json",
+                success: function (data) {
+                    obj = JSON.parse(data);
+                    console.log(obj);
+                    if (typeof obj === "object") {
+                        var len = obj.length;
+                        $(".product_subcategory").empty();
+                        $(".product_subcategory").append(`<option value="" selected>Select</option>`);
+                        for (var i = 0; i < len; i++) {
+                            $(".product_subcategory").append(`<option value="${obj[i].ID}">${obj[i].Subcategory_Name}</option>`);
+                            $(".product_subcategory").val(sid);
+                        }
+                    }
                 }
-                else {
+            })
+        } else {
+            $(".product_subcategory").empty();
+            $(".product_subcategory").append(`<option value="" selected>Select</option>`);
+        }
+    }
+    $(document).on("click", ".delete_product", function () {
+        var product_id = $(this).closest('tr').find(".product_id").val();
+        if (confirm("Are you really want to delete data")) {
+            $.ajax({
+                type: "POST",
+                url: "?controller=Product&function=delete_product",
+                data: { id: product_id },
+                datatype: "json",
 
-                    // window.location.href = "?controller=Product&function=add_product";
+                success: function () {
+                    window.location.href = "?controller=Product&function=all_product";
                 }
-            }
-        })
+            })
+        }
+
     })
     $('input[type="file"]').change(function (e) {
         for (var i = 0; i < this.files.length; i++) {
             var extension = e.target.files[i].name.split('.').pop().toLowerCase();
-            if(extension === 'png' || extension === 'jpg'|| extension === 'jpeg'){
-            var reader = new FileReader();
-            reader.readAsDataURL(this.files[i]);
-            var fileName = e.target.files[i].name;
+            if (extension === 'png' || extension === 'jpg' || extension === 'jpeg') {
+                var reader = new FileReader();
+                reader.readAsDataURL(this.files[i]);
+                var fileName = e.target.files[i].name;
 
-            $('.file_name').append(fileName + ',')}
+                $('.file_name').append(fileName + ',')
+            }
 
         }
     });
@@ -282,16 +312,16 @@ $(document).ready(function () {
                 required: true
 
             },
-            files: {
+            files_image: {
                 required: true,
-                accept: "jpg,png,jpeg"
+                accept: ".jpg,.png,.jpeg"
 
             }
 
         },
         messages: {
 
-            files: {
+            files_image: {
 
                 accept: "Only image type jpg/png/jpeg is allowed"
             }

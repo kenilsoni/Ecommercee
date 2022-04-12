@@ -4,7 +4,7 @@ $(document).ready(function () {
         $(".add_city").css("display", "block");
         $(".page_name").text("Add City");
     })
-   
+
     function onload() {
         $.ajax({
             type: "GET",
@@ -17,7 +17,7 @@ $(document).ready(function () {
                     var mytable = $('#city_table').DataTable();
                     mytable.clear().draw();
                     for (var i = 0; i < len; i++) {
-                        var number=i+1;
+                        var number = i + 1;
                         mytable.row.add($(`
                      <tr>
                      <input type=hidden value="${obj[i].ID}" class="city_id">
@@ -54,17 +54,58 @@ $(document).ready(function () {
             }
         })
     }
-    function getstate(cid){
-        if( cid != ''){
+    function getstate(cid, sid) {
+
+        if (cid != '') {
             $.ajax({
                 type: "POST",
                 url: "?controller=Address&function=getstatebyid",
                 datatype: "json",
-                data:{id:cid},
+                data: { id: cid },
                 success: function (data) {
                     obj = JSON.parse(data);
 
-                    if ( obj !== 'empty') {
+                    if (obj !== 'empty') {
+                        //   console.log("dd")
+                        var len = obj.length;
+                        $(".State").empty();
+                        $(".State").append(`<option value="" selected>Select</option>`);
+                        for (var i = 0; i < len; i++) {
+                            $(".State").append(`<option value="${obj[i].ID}">${obj[i].State}</option>`);
+                        }
+                        if (sid != '') {
+                            $(".State").val(sid);
+                        }
+
+
+                    }
+                    else {
+                        $(".State").empty();
+                        $(".State").append(`<option value="" selected>Select</option>`);
+
+                    }
+                }
+            })
+        }
+        else {
+            $(".State").empty();
+            $(".State").append(`<option value="" selected>Select</option>`);
+            console.log("ss");
+        }
+    }
+    $(document).on('change', '.Country', function () {
+        var cid = $(this).val();
+        if (cid != '') {
+            $.ajax({
+                type: "POST",
+                url: "?controller=Address&function=getstatebyid",
+                datatype: "json",
+                data: { id: cid },
+                success: function (data) {
+                    obj = JSON.parse(data);
+
+                    if (obj !== 'empty') {
+                        //   console.log("dd")
                         var len = obj.length;
                         $(".State").empty();
                         $(".State").append(`<option value="" selected>Select</option>`);
@@ -72,47 +113,74 @@ $(document).ready(function () {
                             $(".State").append(`<option value="${obj[i].ID}">${obj[i].State}</option>`);
                         }
                     }
-                    else{
+                    else {
                         $(".State").empty();
                         $(".State").append(`<option value="" selected>Select</option>`);
-                        
                     }
                 }
-            })}
-            else{
-                $(".State").empty();
-                $(".State").append(`<option value="" selected>Select</option>`);
-            }
-    }
-    $(document).on('change', '.Country', function () {
-        var cid=$(".Country option:selected").val();
-        getstate(cid);
+            })
+        }
+        else {
+            $(".State").empty();
+            $(".State").append(`<option value="" selected>Select</option>`);
+            console.log("ss");
+        }
+
     })
+
     onload();
     getcountry();
-    // getstate();
 
-   
+
+
     $(document).on('click', '.edit_city', function () {
         $(".city_data").hide();
         $(".update_city").css("display", "block");
         $(".page_name").text("Update City");
 
-        var state_id = $(this).closest('tr').find(".state_id").val();
+        var sid = $(this).closest('tr').find(".state_id").val();
         var city = $(this).closest('tr').find(".name_table3").text().trim();
         var cid = $(this).closest('tr').find(".country_id").val();
         var city_id = $(this).closest('tr').find(".city_id").val();
 
         $(".Country").val(cid);
         $(".city-name").val(city);
-       
         $(".city-id").val(city_id);
 
-        getstate(cid);
-        $(".State").val(state_id);
-        console.log(state_id)
+        if (cid != '') {
+            $.ajax({
+                type: "POST",
+                url: "?controller=Address&function=getstatebyid",
+                datatype: "json",
+                data: { id: cid },
+                success: function (data) {
+                    obj = JSON.parse(data);
+
+                    if (obj !== 'empty') {
+
+                        var len = obj.length;
+                        $(".State").empty();
+                        $(".State").append(`<option value="" selected>Select</option>`);
+                        for (var i = 0; i < len; i++) {
+                            $(".State").append(`<option value="${obj[i].ID}">${obj[i].State}</option>`);
+                        }
+                        if (sid != '') {
+                            $(".State").val(sid);
+                        }
+                    }
+                    else {
+                        $(".State").empty();
+                        $(".State").append(`<option value="" selected>Select</option>`);
+                    }
+                }
+            })
+        }
+        else {
+            $(".State").empty();
+            $(".State").append(`<option value="" selected>Select</option>`);
+        }
     })
-  
+
     $(document).on("click", ".delete_city", function () {
         var city_id = $(this).closest('tr').find(".city_id").val();
         if (confirm("Are you really want to delete data")) {
@@ -122,8 +190,8 @@ $(document).ready(function () {
                 data: { id: city_id },
                 datatype: "json",
 
-                success: function () {         
-                        window.location.href = "?controller=Address&function=add_city";               
+                success: function () {
+                    window.location.href = "?controller=Address&function=add_city";
                 }
             })
         }

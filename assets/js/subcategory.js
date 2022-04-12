@@ -88,6 +88,23 @@ $(document).ready(function () {
         $(".subcategory_input").val(subcategory_name);
         $(".update_id").val(subcategory_id);
         $("#Category").val(category_id);
+
+        $.ajax({
+            type: "POST",
+            url: "?controller=SubCategory&function=getdesc",
+            data: { id: subcategory_id },
+            datatype: "json",
+            success: function (data) {
+                obj = JSON.parse(data);
+                var len = obj.length;
+                if (typeof obj === "object") {
+                    for (var i = 0; i < len; i++) {
+                        $("#subcategory_desc").val(obj[i].Subcategory_desc);
+                    }
+                }
+            }
+        })
+
     })
 
     $("#validate_form").validate({
@@ -101,6 +118,9 @@ $(document).ready(function () {
             subcategory_name: {
                 required: true,
             },
+            desc_subcategory: {
+                required: true,
+            }
         }
     });
 

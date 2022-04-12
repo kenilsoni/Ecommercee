@@ -14,6 +14,24 @@ $(document).ready(function () {
 
         $(".color-id").val(color_id);
         $(".color-name").val(color);
+
+        $.ajax({
+            type: "POST",
+            url: "?controller=Product&function=getcolor_id",
+            datatype: "json",
+            data: { id: color_id },
+            success: function (data) {
+                obj = JSON.parse(data);
+                if (typeof obj === "object") {
+                    var len = obj.length;
+                    for (var i = 0; i < len; i++) {
+                        $(".color-code").val(obj[i].Color_Code);
+                    }
+
+                }
+
+            }
+        })
     })
 
     function onload() {
@@ -68,11 +86,17 @@ $(document).ready(function () {
             color_name: {
                 required: true,
             },
+            color_code: {
+                required: true,
+            },
         }
     });
     $("#validate_form1").validate({
         rules: {
             color_name: {
+                required: true,
+            },
+            color_code: {
                 required: true,
             },
         }

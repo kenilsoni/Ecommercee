@@ -56,13 +56,35 @@ $(document).ready(function () {
         var category_id = $(this).closest('tr').find(".category_id").val();
         $(".category_input").val(category_name);
         $(".update_id").val(category_id);
+
+        $.ajax({
+            type: "POST",
+            url: "?controller=Category&function=getdesc",
+            data: { id: category_id },
+            datatype: "json",
+            success: function (data) {
+                obj = JSON.parse(data);
+                var len = obj.length;
+                if (typeof obj === "object") {
+                    for (var i = 0; i < len; i++) {
+                        $("#category_desc").val(obj[i].Category_desc);
+                    }
+                }
+            }
+        })
+
     })
+
+
 
     $("#validate_form").validate({
         rules: {
             category_name: {
                 required: true,
             },
+            desc_category: {
+                required: true,
+            }
         }
     });
 })
