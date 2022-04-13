@@ -32,7 +32,7 @@ class AddressModel
     }
     public function update_country($country, $id)
     {
-        $sql = "UPDATE country SET Country=? WHERE ID=?";
+        $sql = "UPDATE country SET Country=?,Modified_At=NOW() WHERE ID=?";
         $stmt = $this->conn->prepare($sql);
         $success = $stmt->execute([$country, $id]);
         return $success;
@@ -47,7 +47,7 @@ class AddressModel
     // state start
     public function state_data()
     {
-        $sql = "SELECT x.ID,x.Country_ID,x.State,y.Country
+        $sql = "SELECT x.ID,x.Country_ID,x.State,y.Country,x.Created_At,x.Modified_At
         FROM state as x
         LEFT JOIN country as y
         ON x.Country_ID= y.ID";
@@ -65,7 +65,7 @@ class AddressModel
     }
     public function update_state($stateid, $country, $state)
     {
-        $sql = "UPDATE state SET Country_ID=?,State=? WHERE ID=?";
+        $sql = "UPDATE state SET Country_ID=?,State=?,Modified_At=NOW() WHERE ID=?";
         $stmt = $this->conn->prepare($sql);
         $success = $stmt->execute([$country, $state, $stateid]);
         return $success;
@@ -80,7 +80,7 @@ class AddressModel
     // city start
     public function city_data()
     {
-        $sql = "SELECT x.ID,x.Country_ID,x.State_ID,x.City,y.Country,z.State
+        $sql = "SELECT x.ID,x.Country_ID,x.State_ID,x.City,y.Country,z.State,x.Created_At,x.Modified_At
            FROM city as x
            LEFT JOIN country as y
            ON x.Country_ID= y.ID
@@ -100,7 +100,7 @@ class AddressModel
     }
     public function update_city($data)
     {
-        $sql = "UPDATE city SET Country_ID=:country_id,State_ID=:state_id,City=:city_name WHERE ID=:city_id";
+        $sql = "UPDATE city SET Country_ID=:country_id,State_ID=:state_id,City=:city_name,Modified_At=NOW() WHERE ID=:city_id";
         $stmt = $this->conn->prepare($sql);
         $success = $stmt->execute($data);
         return $success;

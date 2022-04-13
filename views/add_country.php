@@ -141,8 +141,10 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Country Name</th>
-                                            <th>Action</th>
+                                            <th>Country</th>
+                                            <th>Created Date</th>
+                                            <th>Modify Date</th>
+                                            <th style="width:125px">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>

@@ -143,7 +143,9 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Category Name</th>
+                                            <th style="width:123px">Category Name</th>
+                                            <th>Created Date</th>
+                                            <th>Modify Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>

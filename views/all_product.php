@@ -13,6 +13,30 @@
     .error {
         color: red;
     }
+
+    .imgGallery img {
+        width: 100px;
+        height: 100px;
+        margin-right: 20px;
+
+    }
+
+    .imgGallery {
+        display: flex;
+    }
+
+    .imgGallery span {
+        margin-right: 20px;
+    }
+
+    .remove {
+        display: block;
+        background: #444;
+        border: 1px solid black;
+        color: white;
+        text-align: center;
+        cursor: pointer;
+    }
 </style>
 <div class="dashboard-wrapper">
     <div class="dashboard-ecommerce">
@@ -144,22 +168,19 @@
                                 <table class="table table-striped table-bordered first" id="product_table">
                                     <thead>
                                         <tr>
-
+                                            <th>ID</th>
                                             <th>Product Name</th>
                                             <th>Image</th>
                                             <th>Quantity</th>
                                             <th>Price</th>
-                                            <th>Action</th>
+                                            <th>Created Date</th>
+                                            <th>Modify Date</th>
+                                            <th style="width:125px">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-
-
                                     </tbody>
-
-
                                 </table>
-
                             </div>
                         </div>
                     </div>
@@ -214,40 +235,52 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="form-group">
                                         <label for="product_color">Product Color</label><br>
-                                        <select class="form-control product_color" id="product_color" name="product_color">
-                                            <option value="" selected>Select</option>
-
+                                        <select class="form-control  selectpicker" id="product_color" name="product_color[]" multiple>
+                                            <?php
+                                            session_start();
+                                            $success = $_SESSION['color'];
+                                            $update = explode(",", $_SESSION['color_update']);
+                                            foreach ($success as $val) { ?>
+                                                <option value="<?php echo $val['ID'] ?>" <?php if (in_array($val['ID'], $update)) {
+                                                                                                echo "selected";
+                                                                                            } ?>><?php echo $val['Product_Color'] ?></option>
+                                            <?php }
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="product_size">Product Size</label><br>
-                                        <select class="form-control product_size" id="product_size" name="product_size">
-                                            <option value="" selected>Select</option>
-
+                                        <select class="form-control selectpicker" id="product_size" name="product_size[]" multiple>
+                                            <?php
+                                            session_start();
+                                            $success = $_SESSION['size'];
+                                            $size = explode(",", $_SESSION['size_update']);
+                                            foreach ($success as $val) { ?>
+                                                <option value="<?php echo $val['ID'] ?>" <?php if (in_array($val['ID'], $size)) {
+                                                                                                echo "selected";
+                                                                                            } ?>><?php echo $val['Product_Size'] ?></option>
+                                            <?php }
+                                            ?>
                                         </select>
-                                    </div>
+                                    </div>                                  
+                                    <div class="custom-file mb-3">
 
-                                    <!-- <div class="custom-file mb-3">
-
-                                        <input type="file" name="files_image" accept=".png, .jpg, .jpeg" class="custom-file-input" id="files_image" multiple>
+                                        <input type="file" name="files_image[]" accept="image/*" class="custom-file-input" id="files_image" multiple>
                                         <label class="custom-file-label form-control" for="chooseFile">Choose Image</label>
 
                                     </div>
                                     <div class="mb-2">
                                         <div class="imgGallery" style="width:100px;">
-                                          
+                                            <!-- image preview -->
                                         </div>
-                                    </div> -->
-
+                                    </div>
                                     <button type="submit" class="btn btn-primary btn-block">Update Product</button>
-
                                 </form>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -258,3 +291,4 @@
 <?php include("footer.php"); ?>
 
 <script src="./assets/js/product.js"></script>
+<script src="./assets/vendor/bootstrap-select/js/bootstrap-select.js"></script>

@@ -139,10 +139,12 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Country Name</th>
-                                            <th>State Name </th>
-                                            <th>City Name</th>
-                                            <th>Action</th>
+                                            <th>Country</th>
+                                            <th>State</th>
+                                            <th>City</th>
+                                            <th>Created Date</th>
+                                            <th>Modify Date</th>
+                                            <th style="width:125px">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>

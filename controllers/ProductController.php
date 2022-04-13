@@ -29,6 +29,8 @@ class ProductController
     {
         $success = $this->model->color_data();
         if (count($success) > 0) {
+            session_start();
+            $_SESSION['color'] = $success;
             echo json_encode($success);
         }
     }
@@ -115,6 +117,8 @@ class ProductController
     {
         $success = $this->model->size_data();
         if (count($success) > 0) {
+            session_start();
+            $_SESSION['size'] = $success;
             echo json_encode($success);
         }
     }
@@ -205,10 +209,14 @@ class ProductController
         $id = $_POST['id'];
         $success = $this->model->product_databyid($id);
         $data_main = [];
+
         foreach ($success as $val) {
             $success = $this->model->getimage($val['ID']);
             $data = array_merge(array($val), $success);
             array_push($data_main, $data);
+            session_start();
+            $_SESSION['color_update'] = $val['Product_Color_ID'];
+            $_SESSION['size_update'] = $val['Product_Size'];
         }
         if (count($success) > 0) {
             echo json_encode($data_main);
@@ -236,11 +244,11 @@ class ProductController
             $subcategory = $_POST['product_subcategory'];
             $color = $_POST['product_color'];
             $size = $_POST['product_size'];
+            $color_string = implode(",", $color);
+            $size_string = implode(",", $size);
 
             session_start();
             if (($product &&  $product_desc &&  $price &&  $quantity && $category &&  $subcategory &&   $color &&  $size) != '') {
-
-
                 $image_name = [];
                 foreach ($_FILES['files_image']['name'] as $id => $val) {
 
@@ -248,10 +256,12 @@ class ProductController
                     $tempLocation    = $_FILES['files_image']['tmp_name'][$id];
                     $targetFilePath  = $uploadsDir . $fileName;
                     $fileType        = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
+                    $rand = rand() . '.' . $fileType;
+                    $path = $uploadsDir . $rand;
 
                     if (in_array($fileType, $allowedFileType)) {
-                        if (move_uploaded_file($tempLocation, $targetFilePath)) {
-                            array_push($image_name, $fileName);
+                        if (move_uploaded_file($tempLocation, $path)) {
+                            array_push($image_name, $rand);
                         }
                     }
                 }
@@ -267,8 +277,8 @@ class ProductController
                     'quantity' => $quantity,
                     'category' => $category,
                     'subcategory' => $subcategory,
-                    'color' => $color,
-                    'size' => $size,
+                    'color' => $color_string,
+                    'size' => $size_string,
                     'trend' => $trend
                 );
                 $success = $this->model->add_productdb($data);
@@ -303,25 +313,30 @@ class ProductController
             $color = $_POST['product_color'];
             $size = $_POST['product_size'];
             $id = $_POST['id'];
+            $color_string = implode(",", $color);
+            $size_string = implode(",", $size);
 
             session_start();
             if (($product &&  $product_desc &&  $price &&  $quantity && $category &&  $subcategory &&   $color &&  $size) != '') {
+                $image_name = [];
+                foreach ($_FILES['files_image']['name'] as $id => $val) {
 
+                    $fileName        = $_FILES['files_image']['name'][$id];
+                    $tempLocation    = $_FILES['files_image']['tmp_name'][$id];
+                    $targetFilePath  = $uploadsDir . $fileName;
+                    $fileType        = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
+                    $rand = rand() . '.' . $fileType;
+                    $path = $uploadsDir . $rand;
 
-                // $image_name = [];
-                // foreach ($_FILES['files_image']['name'] as $id => $val) {
-
-                //     $fileName        = $_FILES['files_image']['name'][$id];
-                //     $tempLocation    = $_FILES['files_image']['tmp_name'][$id];
-                //     $targetFilePath  = $uploadsDir . $fileName;
-                //     $fileType        = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
-
-                //     if (in_array($fileType, $allowedFileType)) {
-                //         if (move_uploaded_file($tempLocation, $targetFilePath)) {
-                //             array_push($image_name, $fileName);
-                //         }
-                //     }
-                // }
+                    if (in_array($fileType, $allowedFileType)) {
+                        if (move_uploaded_file($tempLocation, $path)) {
+                            array_push($image_name, $rand);
+                        }
+                    }
+                }
+                foreach ($image_name as $val) {
+                    $this->model->add_imagedb($val, $_POST['id']);
+                }
                 if (isset($_POST['istrend'])) {
                     $trend = 1;
                 } else {
@@ -334,17 +349,14 @@ class ProductController
                     'quantity' => $quantity,
                     'category' => $category,
                     'subcategory' => $subcategory,
-                    'color' => $color,
-                    'size' => $size,
+                    'color' => $color_string,
+                    'size' => $size_string,
                     'trend' => $trend,
                     'id' => $id
                 );
-
                 $success = $this->model->update_productdb($data);
                 if ($success) {
-                    // foreach ($image_name as $val) {
-                    //     $this->model->update_imagedb($val, $id);
-                    // }
+
                     $_SESSION['updateproduct_token'] = true;
                     header("location:?controller=Product&function=all_product");
                 } else {
@@ -362,9 +374,12 @@ class ProductController
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['id'];
-
             session_start();
             if ($id != "") {
+                $image_name = $this->model->fetch_image($id);
+                foreach ($image_name as $val) {
+                    unlink("./assets/uploads/" . $val['Image_Path']);
+                }
                 $success = $this->model->delete_product($id);
                 if ($success == 1) {
 

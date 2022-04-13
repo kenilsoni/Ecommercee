@@ -40,7 +40,7 @@ class ProductModel
     }
     public function update_color($color,$id,$code)
     {
-        $sql = "UPDATE product_color SET Product_Color=?,Color_Code=? WHERE ID=?";
+        $sql = "UPDATE product_color SET Product_Color=?,Color_Code=?,Modified_At=NOW() WHERE ID=?";
         $stmt = $this->conn->prepare($sql);
         $success = $stmt->execute([$color,$code,$id]);
         return $success;
@@ -70,7 +70,7 @@ class ProductModel
     }
     public function update_size($size, $id)
     {
-        $sql = "UPDATE product_size SET Product_Size=? WHERE ID=?";
+        $sql = "UPDATE product_size SET Product_Size=?,Modified_At=NOW() WHERE ID=?";
         $stmt = $this->conn->prepare($sql);
         $success = $stmt->execute([$size, $id]);
         return $success;
@@ -135,7 +135,7 @@ class ProductModel
     }
     public function update_productdb($data)
     {
-        $sql = "UPDATE product SET Product_Name=:product_name,Product_Description=:product_desc,Product_Price=:price,Product_Quantity=:quantity,Product_Color_ID=:color,Product_Size=:size,Category_ID=:category,Subcategory_ID=:subcategory,IsTrending=:trend WHERE ID=:id";
+        $sql = "UPDATE product SET Product_Name=:product_name,Product_Description=:product_desc,Product_Price=:price,Product_Quantity=:quantity,Product_Color_ID=:color,Product_Size=:size,Category_ID=:category,Subcategory_ID=:subcategory,IsTrending=:trend,Modified_At=NOW() WHERE ID=:id";
         $stmt = $this->conn->prepare($sql);
         $success=$stmt->execute($data);
         return $success;
@@ -146,6 +146,14 @@ class ProductModel
         $stmt = $this->conn->prepare($sql);
         $success = $stmt->execute([$id]);
         return $success;
+    }
+    public function fetch_image($id){
+        $sql = "SELECT Image_Path FROM product_image WHERE Product_ID=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id]);
+        $success = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $success;
+
     }
     // public function update_imagedb($data, $id)
     // {

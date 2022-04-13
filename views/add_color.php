@@ -138,8 +138,11 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Color Name</th>
-                                            <th>Action</th>
+                                            <th>Name</th>
+                                            <th>Code</th>
+                                            <th>Created Date</th>
+                                            <th>Modify Date</th>
+                                            <th style="width:125px">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>

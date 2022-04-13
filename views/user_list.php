@@ -45,10 +45,11 @@
                                 <table class="table table-striped table-bordered first" id="user_table">
                                     <thead>
                                         <tr>
+                                            <th>ID</th>
+                                            <th>UserName</th>
                                             <th>Full Name</th>
                                             <th>Phone</th>
                                             <th>Email</th>
-                                            <th>Address</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -108,10 +109,37 @@
                             <hr>
                             <div class="row text-center">
                                 <div class="col-6">
-                                    <div>Address</div>
+                                    <div>Billing Address</div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="address"></div>
+                                    <div class="baddress"></div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row text-center">
+                                <div class="col-6">
+                                    <div>Shipping Address</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="saddress"></div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row text-center">
+                                <div class="col-6">
+                                    <div>Created Date</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="created"></div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row text-center">
+                                <div class="col-6">
+                                    <div>Modify Date</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="modify"></div>
                                 </div>
                             </div>
                         </div>

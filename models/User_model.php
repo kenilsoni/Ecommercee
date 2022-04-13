@@ -17,7 +17,7 @@ class UserModel
     }
     public function user_data()
     {
-        $sql = "SELECT ID,CONCAT(u.FirstName,' ',u.LastName) as Fullname,Email,Phone
+        $sql = "SELECT ID,CONCAT(u.FirstName,' ',u.LastName) as Fullname,Email,Phone,UserName
         FROM user as u";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
@@ -26,7 +26,7 @@ class UserModel
     }
     public function user_detail($id)
     {
-        $sql = "SELECT *,CONCAT(u.FirstName,' ',u.LastName) as Fullname
+        $sql = "SELECT u.*,CONCAT(u.FirstName,' ',u.LastName) as Fullname
         FROM user as u WHERE ID=?";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$id]);

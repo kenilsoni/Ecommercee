@@ -39,7 +39,7 @@ class CategoryModel
     }
     public function update_category($data)
     {
-        $sql = "UPDATE `product_category` SET `Category_Name`=:Category_Name,`Category_desc`=:desc_category WHERE `ID`=:ID";
+        $sql = "UPDATE `product_category` SET `Category_Name`=:Category_Name,`Category_desc`=:desc_category,`Modified_At`=NOW() WHERE `ID`=:ID";
         $stmt = $this->conn->prepare($sql);
         $success = $stmt->execute($data);
         return $success;

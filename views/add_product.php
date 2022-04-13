@@ -18,6 +18,24 @@
         width: 100px;
         height: 100px;
         margin-right: 20px;
+
+    }
+
+    .imgGallery {
+        display: flex;
+    }
+
+    .imgGallery span {
+        margin-right: 20px;
+    }
+
+    .remove {
+        display: block;
+        background: #444;
+        border: 1px solid black;
+        color: white;
+        text-align: center;
+        cursor: pointer;
     }
 </style>
 <div class="dashboard-wrapper">
@@ -54,7 +72,6 @@
                             <h5 class="card-header">Add Product</h5>
                             <div class="card-body">
                                 <form id="validate_form" action="?controller=Product&function=add_productdata" method="post" enctype="multipart/form-data">
-
                                     <div class="form-group">
                                         <label for="inputText1" class="col-form-label">Product Name</label>
                                         <input id="inputText1" type="text" class="form-control product_name" name="product_name" placeholder="Product Name">
@@ -97,44 +114,46 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="product_color">Product Color</label><br>
-                                        <select class="form-control product_color" id="product_color" name="product_color">
-                                            <option value="" selected>Select</option>
-
+                                        <select class="form-control  selectpicker" id="product_color" name="product_color[]" multiple>
+                                            <?php 
+                                            session_start();
+                                            $success=$_SESSION['color'];
+                                            foreach($success as $val){?>
+                                                <option value="<?php echo $val['ID']?>" ><?php echo $val['Product_Color'] ?></option>
+                                            <?php }
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="product_size">Product Size</label><br>
-                                        <select class="form-control product_size" id="product_size" name="product_size">
-                                            <option value="" selected>Select</option>
-
+                                        <select class="form-control selectpicker" id="product_size" name="product_size[]" multiple>
+                                            <?php 
+                                            session_start();
+                                            $success=$_SESSION['size'];
+                                            foreach($success as $val){?>
+                                                <option value="<?php echo $val['ID']?>" ><?php echo $val['Product_Size'] ?></option>
+                                            <?php }
+                                            ?>
                                         </select>
                                     </div>
-
                                     <div class="custom-file mb-3">
-
                                         <input type="file" name="files_image[]" accept="image/*" class="custom-file-input" id="files_image" multiple>
                                         <label class="custom-file-label form-control" for="chooseFile">Choose Image</label>
-
                                     </div>
                                     <div class="mb-2">
                                         <div class="imgGallery" style="width:100px;">
                                             <!-- image preview -->
                                         </div>
                                     </div>
-                                    <!-- <input type="hidden" class="file_name" name="file_name"> -->
                                     <button type="submit" class="btn btn-primary btn-block">Add Product</button>
-
                                 </form>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
             <!-- ============================================================== -->
             <!-- end Add product  -->
-
         </div>
     </div>
 </div>
@@ -143,3 +162,4 @@
 <?php include("footer.php"); ?>
 
 <script src="./assets/js/product.js"></script>
+<script src="./assets/vendor/bootstrap-select/js/bootstrap-select.js"></script>

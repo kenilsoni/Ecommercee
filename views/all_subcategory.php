@@ -135,9 +135,11 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Category Name</th>
-                                            <th>SubCategory Name</th>
-                                            <th>Action</th>
+                                            <th >Category Name</th>
+                                            <th >SubCategory Name</th>
+                                            <th>Created Date</th>
+                                            <th>Modify Date</th>
+                                            <th style="width:124px">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
