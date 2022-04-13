@@ -52,7 +52,7 @@ $(document).ready(function () {
                      <input type=hidden value="${obj[i].ID}" class="color_id">  
                      <td>${number}</td>              
                      <td class="name_table">${obj[i].Product_Color} </td>  
-                     <td>${obj[i].Color_Code}</td>
+                     <td>${obj[i].Color_Code}<br><input type="color" value="${obj[i].Color_Code}" disabled></td>
                      <td>${obj[i].Created_At}</td>      
                      <td>${obj[i].Modified_At}</td>               
                      <td><button type="button" class="btn btn-rounded btn-primary edit_color">Edit</button>&nbsp;<button type="button" class="btn btn-rounded btn-danger delete_color">Delete</button> </td>
