@@ -17,7 +17,9 @@ $(document).ready(function () {
                      <tr>
                      <input type=hidden value="${obj[i].ID}" class="category_id">
                      <td>${number}</td>
-                     <td class="name_table">${obj[i].Category_Name} </td>
+                     <td class="name_table" >${obj[i].Category_Name} </td>
+                     <td >${obj[i].Created_At} </td>
+                     <td >${obj[i].Modified_At} </td>
                      <td><button type="button" class="btn btn-rounded btn-primary edit_category">Edit</button>&nbsp;<button type="button" class="btn btn-rounded btn-danger delete_category">Delete</button> </td>
                  </tr>
                      `)).draw();

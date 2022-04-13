@@ -27,6 +27,8 @@ $(document).ready(function () {
                      <td class="name_table">${obj[i].Country} </td>
                      <td class="name_table2">${obj[i].State} </td>
                      <td class="name_table3">${obj[i].City} </td>
+                     <td>${obj[i].Created_At} </td>
+                     <td>${obj[i].Modified_At}</td>
                      <td><button type="button" class="btn btn-rounded btn-primary edit_city">Edit</button>&nbsp;<button type="button" class="btn btn-rounded btn-danger delete_city">Delete</button> </td>
                  </tr>
                      `)).draw();

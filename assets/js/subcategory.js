@@ -21,6 +21,8 @@ $(document).ready(function () {
                      <td >${number} </td>
                      <td >${obj[i].Category_Name} </td>
                      <td class="name_table">${obj[i].Subcategory_Name} </td>
+                     <td >${obj[i].Created_At} </td>
+                     <td >${obj[i].Modified_At} </td>
                      <td><button type="button" class="btn btn-rounded btn-primary edit_subcategory">Edit</button>&nbsp;<button type="button" class="btn btn-rounded btn-danger delete_subcategory">Delete</button> </td>
                  </tr>
                      `)).draw();

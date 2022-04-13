@@ -11,13 +11,15 @@ $(document).ready(function () {
                     var mytable = $('#user_table').DataTable();
                     mytable.clear().draw();
                     for (var i = 0; i < len; i++) {
+                        var number=i+1;
                         mytable.row.add($(`
                      <tr>
                      <input type="hidden" value="${obj[i][0].ID}" class="user_id">
+                     <td>${number}</td>
+                     <td>${obj[i][0].UserName}</td>
                      <td>${obj[i][0].Fullname}</td>
                      <td>${obj[i][0].Phone}</td>
                      <td >${obj[i][0].Email} </td>
-                     <td >${obj[i][1].Street} ${obj[i][1].City} ${obj[i][1].State} ${obj[i][1].Country}</td>
                      <td><button type="button" class="btn btn-rounded btn-primary view_user">View Detail</button></td>
                  </tr>
                      `)).draw();
@@ -43,6 +45,7 @@ $(document).ready(function () {
             data: { id: id },
             success: function (data) {
                 obj = JSON.parse(data);
+                console.log(obj);
                 if (typeof obj === "object") {
                     var len = obj.length; console.log(obj);
                     for (var i = 0; i < len; i++) {
@@ -50,8 +53,15 @@ $(document).ready(function () {
                         $(".fullname").text(obj[i][0].Fullname);
                         $(".email").text(obj[i][0].Email);
                         $(".phone").text(obj[i][0].Phone);
-                        $(".address").text(obj[i][1].Street + ' ' + obj[i][1].City + ' ' + obj[i][1].State + ' ' + obj[i][1].Country);
+                        $(".saddress").text(obj[i][1].Street + ' ' + obj[i][1].City + ' ' + obj[i][1].State + ' ' + obj[i][1].Country);
                         $(".gender").text(obj[i][0].Gender == 'M' ? "MALE" : "FEMALE");
+                        $(".created").text(obj[i][0].Created_At);
+                        $(".modify").text(obj[i][0].Modified_At);
+                        if(obj[i][2] !== undefined){
+                            $(".baddress").text(obj[i][2].Street + ' ' + obj[i][2].City + ' ' + obj[i][2].State + ' ' + obj[i][2].Country);
+                        }else{
+                            $(".baddress").text("NA");
+                        }
 
                     }
 

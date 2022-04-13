@@ -34,6 +34,8 @@ $(document).ready(function () {
                      <input type=hidden value="${obj[i].ID}" class="size_id">
                      <td>${number} </td>
                      <td class="name_table">${obj[i].Product_Size} </td>
+                     <td>${obj[i].Created_At}</td>
+                     <td>${obj[i].Modified_At}</td>
                      
                      <td><button type="button" class="btn btn-rounded btn-primary edit_size">Edit</button>&nbsp;<button type="button" class="btn btn-rounded btn-danger delete_size">Delete</button> </td>
                  </tr>

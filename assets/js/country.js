@@ -18,6 +18,8 @@ $(document).ready(function () {
                      <input type=hidden value="${obj[i].ID}" class="country_id">
                      <td >${number} </td>
                      <td class="name_table">${obj[i].Country} </td>
+                     <td>${obj[i].Created_At} </td>
+                     <td>${obj[i].Modified_At} </td>
                      <td><button type="button" class="btn btn-rounded btn-primary edit_country">Edit</button>&nbsp;<button type="button" class="btn btn-rounded btn-danger delete_country">Delete</button> </td>
                  </tr>
                      `)).draw();
