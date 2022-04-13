@@ -56,45 +56,7 @@ $(document).ready(function () {
             }
         })
     }
-    function getstate(cid, sid) {
-
-        if (cid != '') {
-            $.ajax({
-                type: "POST",
-                url: "?controller=Address&function=getstatebyid",
-                datatype: "json",
-                data: { id: cid },
-                success: function (data) {
-                    obj = JSON.parse(data);
-
-                    if (obj !== 'empty') {
-                        //   console.log("dd")
-                        var len = obj.length;
-                        $(".State").empty();
-                        $(".State").append(`<option value="" selected>Select</option>`);
-                        for (var i = 0; i < len; i++) {
-                            $(".State").append(`<option value="${obj[i].ID}">${obj[i].State}</option>`);
-                        }
-                        if (sid != '') {
-                            $(".State").val(sid);
-                        }
-
-
-                    }
-                    else {
-                        $(".State").empty();
-                        $(".State").append(`<option value="" selected>Select</option>`);
-
-                    }
-                }
-            })
-        }
-        else {
-            $(".State").empty();
-            $(".State").append(`<option value="" selected>Select</option>`);
-            console.log("ss");
-        }
-    }
+   
     $(document).on('change', '.Country', function () {
         var cid = $(this).val();
         if (cid != '') {
@@ -105,9 +67,7 @@ $(document).ready(function () {
                 data: { id: cid },
                 success: function (data) {
                     obj = JSON.parse(data);
-
                     if (obj !== 'empty') {
-                        //   console.log("dd")
                         var len = obj.length;
                         $(".State").empty();
                         $(".State").append(`<option value="" selected>Select</option>`);
@@ -132,8 +92,6 @@ $(document).ready(function () {
 
     onload();
     getcountry();
-
-
 
     $(document).on('click', '.edit_city', function () {
         $(".city_data").hide();
@@ -191,13 +149,11 @@ $(document).ready(function () {
                 url: "?controller=Address&function=delete_city",
                 data: { id: city_id },
                 datatype: "json",
-
                 success: function () {
                     window.location.href = "?controller=Address&function=add_city";
                 }
             })
         }
-
     })
     $("#validate_form").validate({
         rules: {
@@ -209,6 +165,7 @@ $(document).ready(function () {
             },
             city: {
                 required: true,
+                maxlength: 50
             }
         }
     });
@@ -222,6 +179,7 @@ $(document).ready(function () {
             },
             city: {
                 required: true,
+                maxlength: 50
             }
         }
     });

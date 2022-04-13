@@ -11,7 +11,7 @@ $(document).ready(function () {
                     var mytable = $('#user_table').DataTable();
                     mytable.clear().draw();
                     for (var i = 0; i < len; i++) {
-                        var number=i+1;
+                        var number = i + 1;
                         mytable.row.add($(`
                      <tr>
                      <input type="hidden" value="${obj[i][0].ID}" class="user_id">
@@ -20,19 +20,45 @@ $(document).ready(function () {
                      <td>${obj[i][0].Fullname}</td>
                      <td>${obj[i][0].Phone}</td>
                      <td >${obj[i][0].Email} </td>
-                     <td><button type="button" class="btn btn-rounded btn-primary view_user">View Detail</button></td>
-                 </tr>
+                     <td><button type="button" class="btn btn-rounded btn-primary view_user">View Detail</button>
+                     ${obj[i][0].Status == 0 ? `<button type="button" class="btn btn-rounded btn-success active">Activate</button>` : `<button type="button" class="btn btn-rounded btn-danger deactive">Deactivate</button>`}                
+                     </td>
+                     </tr>
                      `)).draw();
-
                     }
-
                 }
-
             }
         })
-
     }
     onload();
+    $(document).on('click', '.deactive', function () {
+        var id = $(this).closest("tr").find(".user_id").val();
+        $.ajax({
+            type: "POST",
+            url: "?controller=User&function=deactive",
+            datatype: "json",
+            data: { id: id },
+            success: function (data) {
+                if (data == 1) {
+                    onload();
+                }
+            }
+        })
+    })
+    $(document).on('click', '.active', function () {
+        var id = $(this).closest("tr").find(".user_id").val();
+        $.ajax({
+            type: "POST",
+            url: "?controller=User&function=active",
+            datatype: "json",
+            data: { id: id },
+            success: function (data) {
+                if (data == 1) {
+                    onload();
+                }
+            }
+        })
+    })
     $(document).on('click', '.view_user', function () {
         var id = $(this).closest("tr").find('.user_id').val();
         $("#view_detail").css("display", "block");
@@ -57,18 +83,14 @@ $(document).ready(function () {
                         $(".gender").text(obj[i][0].Gender == 'M' ? "MALE" : "FEMALE");
                         $(".created").text(obj[i][0].Created_At);
                         $(".modify").text(obj[i][0].Modified_At);
-                        if(obj[i][2] !== undefined){
+                        if (obj[i][2] !== undefined) {
                             $(".baddress").text(obj[i][2].Street + ' ' + obj[i][2].City + ' ' + obj[i][2].State + ' ' + obj[i][2].Country);
-                        }else{
+                        } else {
                             $(".baddress").text("NA");
                         }
-
                     }
-
                 }
-
             }
         })
-
     })
 })

@@ -70,6 +70,7 @@ $(document).ready(function () {
         rules: {
             size: {
                 required: true,
+                maxlength: 10
             },
         }
     });
@@ -77,6 +78,7 @@ $(document).ready(function () {
         rules: {
             size: {
                 required: true,
+                maxlength: 10
             },
         }
     });

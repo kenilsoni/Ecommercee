@@ -88,6 +88,7 @@ $(document).ready(function () {
         rules: {
             color_name: {
                 required: true,
+                maxlength: 50
             },
             color_code: {
                 required: true,
@@ -98,6 +99,7 @@ $(document).ready(function () {
         rules: {
             color_name: {
                 required: true,
+                maxlength: 50
             },
             color_code: {
                 required: true,

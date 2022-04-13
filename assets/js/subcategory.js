@@ -24,16 +24,13 @@ $(document).ready(function () {
                      <td >${obj[i].Created_At} </td>
                      <td >${obj[i].Modified_At} </td>
                      <td><button type="button" class="btn btn-rounded btn-primary edit_subcategory">Edit</button>&nbsp;<button type="button" class="btn btn-rounded btn-danger delete_subcategory">Delete</button> </td>
-                 </tr>
+                     </tr>
                      `)).draw();
 
                     }
-
                 }
-
             }
         })
-
     }
     function getcategory() {
         $.ajax({
@@ -44,20 +41,10 @@ $(document).ready(function () {
                 obj = JSON.parse(data);
                 if (typeof obj === "object") {
                     var len = obj.length;
-                    // $("#Category").append('');
                     for (var i = 0; i < len; i++) {
-
-                        $("#Category").append(`
-                 
-                    <option value="${obj[i].ID}">${obj[i].Category_Name}</option>
-
-                    `);
-
-
+                        $("#Category").append(`<option value="${obj[i].ID}">${obj[i].Category_Name}</option>`);
                     }
-
                 }
-
             }
         })
     }
@@ -72,7 +59,6 @@ $(document).ready(function () {
                 url: "?controller=SubCategory&function=deletesubcategory",
                 data: { id: subcategory_id },
                 datatype: "json",
-
                 success: function () {
                     window.location.href = "?controller=SubCategory&function=all_subcategory";
                 }
@@ -113,15 +99,18 @@ $(document).ready(function () {
         rules: {
             category_name: {
                 required: true,
+
             },
             Category: {
                 required: true,
             },
             subcategory_name: {
                 required: true,
+                maxlength: 50
             },
             desc_subcategory: {
                 required: true,
+                maxlength: 255
             }
         }
     });

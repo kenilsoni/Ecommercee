@@ -21,7 +21,7 @@ $(document).ready(function () {
                      <td >${obj[i].Created_At} </td>
                      <td >${obj[i].Modified_At} </td>
                      <td><button type="button" class="btn btn-rounded btn-primary edit_category">Edit</button>&nbsp;<button type="button" class="btn btn-rounded btn-danger delete_category">Delete</button> </td>
-                 </tr>
+                     </tr>
                      `)).draw();
 
                     }
@@ -83,9 +83,11 @@ $(document).ready(function () {
         rules: {
             category_name: {
                 required: true,
+                maxlength: 50
             },
             desc_category: {
                 required: true,
+                maxlength: 255
             }
         }
     });

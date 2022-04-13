@@ -96,6 +96,7 @@ $(document).ready(function () {
             },
             state: {
                 required: true,
+                maxlength: 50
             }
         }
     });
@@ -106,6 +107,7 @@ $(document).ready(function () {
             },
             state: {
                 required: true,
+                maxlength: 50
             }
         }
     });

@@ -21,7 +21,7 @@ $(document).ready(function () {
                      <td>${obj[i].Created_At} </td>
                      <td>${obj[i].Modified_At} </td>
                      <td><button type="button" class="btn btn-rounded btn-primary edit_country">Edit</button>&nbsp;<button type="button" class="btn btn-rounded btn-danger delete_country">Delete</button> </td>
-                 </tr>
+                     </tr>
                      `)).draw();
 
                     }
@@ -50,7 +50,6 @@ $(document).ready(function () {
                 url: "?controller=Address&function=delete_country",
                 data: { id: country_id },
                 datatype: "json",
-
                 success: function () {
                     window.location.href = "?controller=Address&function=add_country";
                 }
@@ -68,6 +67,7 @@ $(document).ready(function () {
         rules: {
             country: {
                 required: true,
+                maxlength: 50
             },
         }
     });
@@ -75,6 +75,7 @@ $(document).ready(function () {
         rules: {
             country: {
                 required: true,
+                maxlength: 50
             },
         }
     });

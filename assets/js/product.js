@@ -1,63 +1,34 @@
 $(document).ready(function () {
 
-
-    // $(function () {
-    //     // Multiple images preview with JavaScript
-    //     var multiImgPreview = function (input, imgPreviewPlaceholder) {
-    //         if (input.files) {
-    //             var filesAmount = input.files.length;
-    //             for (i = 0; i < filesAmount; i++) {
-    //                 var extension = input.files[i].name.split('.').pop().toLowerCase();
-    //                 if (extension === 'jpg' || extension === 'png' || extension === 'jpeg') {
-    //                     var reader = new FileReader();
-    //                     reader.onload = function (event) {
-    //                         $($.parseHTML('<img>')).attr('src', event.target.result).attr('class', 'image').appendTo(imgPreviewPlaceholder);
-    //                         // $(imgPreviewPlaceholder).append(`<button type="button"  class="btn btn-danger delete_image" >Delete</button>`);
-    //                     }
-    //                     reader.readAsDataURL(input.files[i]);
-    //                 }
-    //             }
-    //         }
-    //     };
-    //     $('#files_image').on('change', function () {
-    //         multiImgPreview(this, 'div.imgGallery');
-    //     });
-    // });
-    //   $(document).on('click','.delete_image',function(){
-    //       var id=$(this).remove();
-    //       console.log(id);
-    //   })
     if (window.File && window.FileList && window.FileReader) {
-    $("#files_image").on("change", function(e) {
-      var files = e.target.files,
-        filesLength = files.length;
-      for (var i = 0; i < filesLength; i++) {
-        var f = files[i]
-        var fileReader = new FileReader();
-        fileReader.onload = (function(e) {
-          var file = e.target;
-          $(".imgGallery").append("<span class=\"pip\">" +
-          "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
-          "<br/><span class=\"remove\">Remove image</span>" +
-          "</span>");
-          $(".remove").click(function(){
-            $(this).parent(".pip").remove();
-          });
-          
-          // Old code here
-          /*$("<img></img>", {
-            class: "imageThumb",
-            src: e.target.result,
-            title: file.name + " | Click to remove"
-          }).insertAfter("#files").click(function(){$(this).remove();});*/
-          
+        $("#files_image").on("change", function (e) {
+            var files = e.target.files,
+                filesLength = files.length;
+            for (var i = 0; i < filesLength; i++) {
+                var f = files[i]
+                var fileReader = new FileReader();
+                fileReader.onload = (function (e) {
+                    var file = e.target;
+                    $(".imgGallery").append("<span class=\"pip\">" +
+                        "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                        "<br/><button class=\"remove btn btn-danger\">Remove</button>" +
+                        "</span>");
+                    $(".remove").click(function () {
+                        $(this).parent(".pip").remove();
+                    });
+                });
+                fileReader.readAsDataURL(f);
+            }
+            $(".upload-img").show();
+
         });
-        fileReader.readAsDataURL(f);
-      }
-    });
-  } else {
-    alert("Your browser doesn't support to File API")
-  }
+    } else {
+        alert("Your browser doesn't support to File API")
+    }
+
+    $(".upload-img").hide();
+
+
 
     function onload() {
         $.ajax({
@@ -72,7 +43,7 @@ $(document).ready(function () {
                     var mytable = $('#product_table').DataTable();
                     mytable.clear().draw();
                     for (var i = 0; i < len; i++) {
-                        var number=i+1;
+                        var number = i + 1;
                         mytable.row.add($(`
                         <tr>
                         <input type="hidden" value="${obj[i][0].ID}" class="product_id">
@@ -85,17 +56,11 @@ $(document).ready(function () {
                         <td>${obj[i][0].Product_Price} </td>
                         <td>${obj[i][0].Created_At} </td>
                         <td>${obj[i][0].Modified_At} </td>
-                       
-
-
                         <td><button type="button" class="btn btn-rounded btn-primary edit_product">Edit</button>&nbsp;<button type="button" class="btn btn-rounded btn-danger delete_product">Delete</button> </td>
                     </tr>
                      `)).draw();
-
                     }
-
                 }
-
             }
         })
     }
@@ -108,20 +73,10 @@ $(document).ready(function () {
                 obj = JSON.parse(data);
                 if (typeof obj === "object") {
                     var len = obj.length;
-                    // $("#Category").append('');
                     for (var i = 0; i < len; i++) {
-
-                        $("#Category").append(`
-                 
-                    <option value="${obj[i].ID}">${obj[i].Category_Name}</option>
-
-                    `);
-
-
+                        $("#Category").append(` <option value="${obj[i].ID}">${obj[i].Category_Name}</option>`);
                     }
-
                 }
-
             }
         })
     }
@@ -129,54 +84,16 @@ $(document).ready(function () {
     function getsize() {
         $.ajax({
             type: "GET",
-            url: "?controller=Product&function=getsize",
-            datatype: "json",
-            success: function (data) {
-                obj = JSON.parse(data);
-                if (typeof obj === "object") {
-                    var len = obj.length;
-
-                    // for (var i = 0; i < len; i++) {
-                    //     $(".product_size").append(`
-                 
-                    // <option value="${obj[i].ID}">${obj[i].Product_Size}</option>
-
-                    // `);
-
-                    // }
-
-                }
-
-            }
+            url: "?controller=Product&function=getsize"
         })
     }
     function getcolor() {
         $.ajax({
             type: "GET",
-            url: "?controller=Product&function=getcolor",
-            datatype: "json",
-            success: function (data) {
-                obj = JSON.parse(data);
-                if (typeof obj === "object") {
-                    var len = obj.length;
-
-                    // for (var i = 0; i < len; i++) {
-                    //     $(".product_color").append(`
-                 
-                    //     <option value="${obj[i].ID}">${obj[i].Product_Color}</option>
-    
-                    //     `);
-
-
-                    // }
-
-                }
-
-            }
+            url: "?controller=Product&function=getcolor"
         })
     }
     onload();
-
     getcategory();
     getsize();
     getcolor();
@@ -184,7 +101,6 @@ $(document).ready(function () {
         var id = $(".product_category option:selected").val();
 
         if (id != '') {
-
             $.ajax({
                 type: "POST",
                 url: "?controller=Product&function=getsubcategory_id",
@@ -198,16 +114,9 @@ $(document).ready(function () {
                         $(".product_subcategory").empty();
                         $(".product_subcategory").append(`<option value="" selected>Select</option>`);
                         for (var i = 0; i < len; i++) {
-                            $(".product_subcategory").append(`
-                        
-                        <option value="${obj[i].ID}">${obj[i].Subcategory_Name}</option>
-    
-                        `);
-
+                            $(".product_subcategory").append(`<option value="${obj[i].ID}">${obj[i].Subcategory_Name}</option>`);
                         }
-
                     }
-
                 }
             })
         } else {
@@ -249,13 +158,54 @@ $(document).ready(function () {
 
             }
         })
-
-
+        getimage(productid)
 
     })
+
+    function getimage(productid) {
+        var productid = productid;
+        $.ajax({
+            type: "POST",
+            url: "?controller=Product&function=getimage_update",
+            data: { id: productid },
+            datatype: "json",
+            success: function (data) {
+                obj = JSON.parse(data);
+                if (typeof obj === "object") {
+                    var len = obj.length;
+                    $(".available_image").html('');
+                    for (var i = 0; i < len; i++) {
+                        $(".available_image").append(`<div><input type="hidden" value="${obj[i].ID}" class="image_id"><img src="./assets/uploads/${obj[i].Image_Path}" /><br><button type="button" class="remove_image btn btn-danger">Remove</button></div>`);
+                    }
+                }
+            }
+        })
+    }
+
+    $(document).on("click", ".remove_image", function () {
+        var id = $(this).closest("div").find(".image_id").val();
+        var product_id = $(".product-id").val();
+        if (id != '') {
+            $.ajax({
+                type: "POST",
+                url: "?controller=Product&function=delete_image",
+                data: { id: id },
+                datatype: "json",
+                success: function (data) {
+                    if (data == 1) {
+                        alert("image deleted successfully");
+                        getimage(product_id);
+                    }
+                    else {
+                        alert("something went wrong");
+                    }
+                }
+            })
+        }
+    })
+
     function getsubcategory_product(id, sid) {
         if (id != '') {
-
             $.ajax({
                 type: "POST",
                 url: "?controller=Product&function=getsubcategory_id",
@@ -288,7 +238,6 @@ $(document).ready(function () {
                 url: "?controller=Product&function=delete_product",
                 data: { id: product_id },
                 datatype: "json",
-
                 success: function () {
                     window.location.href = "?controller=Product&function=all_product";
                 }
@@ -296,74 +245,4 @@ $(document).ready(function () {
         }
 
     })
-    $('input[type="file"]').change(function (e) {
-        for (var i = 0; i < this.files.length; i++) {
-            var extension = e.target.files[i].name.split('.').pop().toLowerCase();
-            if (extension === 'png' || extension === 'jpg' || extension === 'jpeg') {
-                var reader = new FileReader();
-                reader.readAsDataURL(this.files[i]);
-                var fileName = e.target.files[i].name;
-
-                $('.file_name').append(fileName + ',')
-            }
-
-        }
-    });
-    $("#validate_form").validate({
-        rules: {
-            product_name: {
-                required: true,
-                maxlength: 50
-
-            },
-            product_desc: {
-                required: true,
-                maxlength: 255
-
-            },
-            product_price: {
-                required: true,
-                maxlength: 10
-
-            },
-            product_quantity: {
-                required: true,
-                maxlength: 10
-
-
-            },
-            product_category: {
-                required: true
-
-            },
-            product_subcategory: {
-                required: true
-
-            },
-            product_color: {
-                required: true
-
-            },
-            product_size: {
-                required: true
-
-            },
-            files_image: {
-                required: true,
-                accept: ".jpg,.png,.jpeg"
-
-            }
-
-        },
-        messages: {
-
-            files_image: {
-
-                accept: "Only image type jpg/png/jpeg is allowed"
-            }
-
-        }
-    });
-  
-
 })
