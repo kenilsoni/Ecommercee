@@ -202,9 +202,7 @@
                                 <button type="submit" class="btn btn-primary btn-block">Update State</button>
                             </form>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>

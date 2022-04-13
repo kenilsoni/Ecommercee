@@ -36,7 +36,6 @@
             <!-- ============================================================== -->
 
             <div class="ecommerce-widget">
-
                 <!--  Color Details  -->
                 <div class="col-12 color_detail">
                     <div class="mb-2">
@@ -168,7 +167,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText3" class="col-form-label">Select Color</label>
-                                        <input id="inputText3" type="color" class="form-control color-code" name="color_code" >
+                                        <input id="inputText3" type="color" class="form-control color-code" name="color_code">
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-block">Add Color</button>
                                 </form>

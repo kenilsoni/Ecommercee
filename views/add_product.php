@@ -29,10 +29,16 @@
         margin-right: 20px;
     }
 
+    .switch-button label:before {
+        content: "NO" !important;
+    }
+
+    .switch-button input[type=checkbox]:checked+span label:before {
+        content: "YES" !important;
+    }
+
     .remove {
         display: block;
-        background: #444;
-        border: 1px solid black;
         color: white;
         text-align: center;
         cursor: pointer;
@@ -71,26 +77,26 @@
                         <div class="card">
                             <h5 class="card-header">Add Product</h5>
                             <div class="card-body">
-                                <form id="validate_form" action="?controller=Product&function=add_productdata" method="post" enctype="multipart/form-data">
+                                <form action="?controller=Product&function=add_productdata" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label for="inputText1" class="col-form-label">Product Name</label>
-                                        <input id="inputText1" type="text" class="form-control product_name" name="product_name" placeholder="Product Name">
+                                        <input id="inputText1" type="text" class="form-control product_name" name="product_name" placeholder="Product Name" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Product Description</label>
-                                        <textarea class="form-control" name="product_desc" id="exampleFormControlTextarea1 product_desc" rows="3"></textarea>
+                                        <textarea class="form-control" name="product_desc" id="exampleFormControlTextarea1 product_desc" rows="3" required></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText4" class="col-form-label">Price (Per Unit)</label>
-                                        <input id="inputText4" type="number" name="product_price" class="form-control product_price" placeholder="Price">
+                                        <input id="inputText4" type="number" name="product_price" class="form-control product_price" placeholder="Price" min="0" max="99999" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputText6" class="col-form-label">Quantity</label>
-                                        <input id="inputText6" type="number" name="product_quantity" class="form-control product_quantity" placeholder="Quantity">
+                                        <input id="inputText6" type="number" name="product_quantity" class="form-control product_quantity" placeholder="Quantity" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="Category">Category</label><br>
-                                        <select class="form-control product_category" name="product_category" id="Category">
+                                        <select class="form-control product_category" name="product_category" id="Category" required>
                                             <option value="" selected>Select</option>
 
 
@@ -98,7 +104,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="Sub_Category">Sub Category</label><br>
-                                        <select class="form-control product_subcategory" name="product_subcategory" id="Sub_Category">
+                                        <select class="form-control product_subcategory" name="product_subcategory" id="Sub_Category" required>
                                             <option value="" selected>Select</option>
 
                                         </select>
@@ -114,33 +120,34 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="product_color">Product Color</label><br>
-                                        <select class="form-control  selectpicker" id="product_color" name="product_color[]" multiple>
-                                            <?php 
+                                        <select class="form-control  selectpicker" id="product_color" name="product_color[]" multiple required>
+                                            <?php
                                             session_start();
-                                            $success=$_SESSION['color'];
-                                            foreach($success as $val){?>
-                                                <option value="<?php echo $val['ID']?>" ><?php echo $val['Product_Color'] ?></option>
+                                            $success = $_SESSION['color'];
+                                            foreach ($success as $val) { ?>
+                                                <option value="<?php echo $val['ID'] ?>"><?php echo $val['Product_Color'] ?></option>
                                             <?php }
                                             ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="product_size">Product Size</label><br>
-                                        <select class="form-control selectpicker" id="product_size" name="product_size[]" multiple>
-                                            <?php 
+                                        <select class="form-control selectpicker" id="product_size" name="product_size[]" multiple required>
+                                            <?php
                                             session_start();
-                                            $success=$_SESSION['size'];
-                                            foreach($success as $val){?>
-                                                <option value="<?php echo $val['ID']?>" ><?php echo $val['Product_Size'] ?></option>
+                                            $success = $_SESSION['size'];
+                                            foreach ($success as $val) { ?>
+                                                <option value="<?php echo $val['ID'] ?>"><?php echo $val['Product_Size'] ?></option>
                                             <?php }
                                             ?>
                                         </select>
                                     </div>
                                     <div class="custom-file mb-3">
-                                        <input type="file" name="files_image[]" accept="image/*" class="custom-file-input" id="files_image" multiple>
+                                        <input type="file" name="files_image[]" accept=".jpg , .png , .jpeg " class="custom-file-input" id="files_image" multiple required>
                                         <label class="custom-file-label form-control" for="chooseFile">Choose Image</label>
                                     </div>
                                     <div class="mb-2">
+                                        <h4 class="upload-img">Uploaded Images</h4>
                                         <div class="imgGallery" style="width:100px;">
                                             <!-- image preview -->
                                         </div>

@@ -19,7 +19,6 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="page-header">
                         <h2 class="pageheader-title">City</h2>
-
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -182,9 +181,7 @@
                                     <button type="submit" class="btn btn-primary btn-block">Add City</button>
                                 </form>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
                 <!-- Update city -->

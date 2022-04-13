@@ -135,20 +135,16 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th >Category Name</th>
-                                            <th >SubCategory Name</th>
+                                            <th>Category Name</th>
+                                            <th>SubCategory Name</th>
                                             <th>Created Date</th>
                                             <th>Modify Date</th>
                                             <th style="width:124px">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-
                                     </tbody>
-
-
                                 </table>
-
                             </div>
                         </div>
                     </div>
@@ -180,9 +176,7 @@
                                     <button type="submit" class="btn btn-primary btn-block">Update SubCategory</button>
                                 </form>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>

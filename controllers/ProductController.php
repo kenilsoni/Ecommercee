@@ -36,10 +36,12 @@ class ProductController
     }
     public function getcolor_id()
     {
-        $id = $_POST['id'];
-        $success = $this->model->colordata_id($id);
-        if (count($success) > 0) {
-            echo json_encode($success);
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'];
+            $success = $this->model->colordata_id($id);
+            if (count($success) > 0) {
+                echo json_encode($success);
+            }
         }
     }
     public function add_colordata()
@@ -49,12 +51,10 @@ class ProductController
 
             $color = $this->test_input($_POST['color_name']);
             $code = $this->test_input($_POST['color_code']);
-
             session_start();
-            if ($color != "" || $code != "") {
+            if ($color != "" && $code != "") {
                 $success = $this->model->add_colordb($color, $code);
                 if ($success == 1) {
-
                     $_SESSION['addcolor_token'] = true;
                     header("location:?controller=Product&function=add_color");
                 } else {
@@ -69,17 +69,15 @@ class ProductController
     }
     public function update_color()
     {
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['color_id'];
             $color = $this->test_input($_POST['color_name']);
             $code = $this->test_input($_POST['color_code']);
 
             session_start();
-            if ($color != "" || $code != "") {
+            if ($color != "" && $code != "") {
                 $success = $this->model->update_color($color, $id, $code);
                 if ($success == 1) {
-
                     $_SESSION['updatecolor_token'] = true;
                     header("location:?controller=Product&function=add_color");
                 } else {
@@ -94,7 +92,6 @@ class ProductController
     }
     public function delete_color()
     {
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['id'];
 
@@ -102,7 +99,6 @@ class ProductController
             if ($id != "") {
                 $success = $this->model->delete_color($id);
                 if ($success == 1) {
-
                     $_SESSION['deletecolor_token'] = true;
                 } else {
                     $_SESSION['deletecolor_token'] = false;
@@ -124,16 +120,13 @@ class ProductController
     }
     public function add_sizedata()
     {
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
             $size = $this->test_input($_POST['size']);
 
             session_start();
             if ($size != "") {
                 $success = $this->model->add_sizedb($size);
                 if ($success == 1) {
-
                     $_SESSION['addsize_token'] = true;
                     header("location:?controller=Product&function=add_size");
                 } else {
@@ -180,7 +173,6 @@ class ProductController
             if ($id != "") {
                 $success = $this->model->delete_size($id);
                 if ($success == 1) {
-
                     $_SESSION['deletesize_token'] = true;
                 } else {
                     $_SESSION['deletesize_token'] = false;
@@ -209,7 +201,6 @@ class ProductController
         $id = $_POST['id'];
         $success = $this->model->product_databyid($id);
         $data_main = [];
-
         foreach ($success as $val) {
             $success = $this->model->getimage($val['ID']);
             $data = array_merge(array($val), $success);
@@ -230,9 +221,17 @@ class ProductController
             echo json_encode($success);
         }
     }
+    public function getimage_update()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $success = $this->model->fetch_image($_POST['id']);
+            if (count($success) > 0) {
+                echo json_encode($success);
+            }
+        }
+    }
     public function add_productdata()
     {
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $uploadsDir = "./assets/uploads/";
             $allowedFileType = array('jpg', 'png', 'jpeg');
@@ -251,7 +250,6 @@ class ProductController
             if (($product &&  $product_desc &&  $price &&  $quantity && $category &&  $subcategory &&   $color &&  $size) != '') {
                 $image_name = [];
                 foreach ($_FILES['files_image']['name'] as $id => $val) {
-
                     $fileName        = $_FILES['files_image']['name'][$id];
                     $tempLocation    = $_FILES['files_image']['tmp_name'][$id];
                     $targetFilePath  = $uploadsDir . $fileName;
@@ -300,7 +298,6 @@ class ProductController
     }
     public function update_productdata()
     {
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $uploadsDir = "./assets/uploads/";
             $allowedFileType = array('jpg', 'png', 'jpeg');
@@ -312,7 +309,6 @@ class ProductController
             $subcategory = $_POST['product_subcategory'];
             $color = $_POST['product_color'];
             $size = $_POST['product_size'];
-            $id = $_POST['id'];
             $color_string = implode(",", $color);
             $size_string = implode(",", $size);
 
@@ -320,14 +316,12 @@ class ProductController
             if (($product &&  $product_desc &&  $price &&  $quantity && $category &&  $subcategory &&   $color &&  $size) != '') {
                 $image_name = [];
                 foreach ($_FILES['files_image']['name'] as $id => $val) {
-
                     $fileName        = $_FILES['files_image']['name'][$id];
                     $tempLocation    = $_FILES['files_image']['tmp_name'][$id];
                     $targetFilePath  = $uploadsDir . $fileName;
                     $fileType        = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
                     $rand = rand() . '.' . $fileType;
                     $path = $uploadsDir . $rand;
-
                     if (in_array($fileType, $allowedFileType)) {
                         if (move_uploaded_file($tempLocation, $path)) {
                             array_push($image_name, $rand);
@@ -352,7 +346,7 @@ class ProductController
                     'color' => $color_string,
                     'size' => $size_string,
                     'trend' => $trend,
-                    'id' => $id
+                    'id' => $_POST['id']
                 );
                 $success = $this->model->update_productdb($data);
                 if ($success) {
@@ -369,9 +363,22 @@ class ProductController
             }
         }
     }
+    public function delete_image()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'];
+            $image_name = $this->model->fetch_image_table($id);
+            foreach ($image_name as $val) {
+                unlink("./assets/uploads/" . $val['Image_Path']);
+            }
+            $success = $this->model->image_delete($id);
+            if ($success) {
+                echo $success;
+            }
+        }
+    }
     public function delete_product()
     {
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['id'];
             session_start();

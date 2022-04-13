@@ -43,4 +43,24 @@ class UserController
             }
         }
     }
+    public function deactive()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'];
+            $success = $this->model->deactive_user($id);
+            if ($success) {
+                echo $success;
+            }
+        }
+    }
+    public function active()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'];
+            $success = $this->model->active_user($id);
+            if ($success) {
+                echo $success;
+            }
+        }
+    }
 }

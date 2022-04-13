@@ -173,16 +173,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Description</label>
-                                        <textarea class="form-control" name="desc_category" id="category_desc" rows="3" id="exampleFormControlTextarea1"  placeholder="Description"></textarea>
+                                        <textarea class="form-control" name="desc_category" id="category_desc" rows="3" id="exampleFormControlTextarea1" placeholder="Description"></textarea>
                                     </div>
-
                                     <button type="submit" class="btn btn-primary btn-block">Update Category</button>
-
                                 </form>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>

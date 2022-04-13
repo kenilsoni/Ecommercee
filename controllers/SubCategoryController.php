@@ -31,7 +31,7 @@ class SubCategoryController
             $name = $this->test_input($_POST['subcategory_name']);
             $desc = $this->test_input($_POST['desc_subcategory']);
             session_start();
-            if ($name != "") {
+            if ($name != "" && $desc != "") {
                 $data = array(
                     'ID' => $id,
                     'Subcategory_Name' => $name,
@@ -39,7 +39,6 @@ class SubCategoryController
                 );
                 $success = $this->model->addsubcategory_data($data);
                 if ($success == 1) {
-
                     $_SESSION['addsubcategory_token'] = true;
                     header("location:?controller=SubCategory&function=all_subcategory");
                 } else {
@@ -54,10 +53,12 @@ class SubCategoryController
     }
     public function getdesc()
     {
-        $id = $_POST['id'];
-        $success = $this->model->desc_data($id);
-        if (count($success) > 0) {
-            echo json_encode($success);
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'];
+            $success = $this->model->desc_data($id);
+            if (count($success) > 0) {
+                echo json_encode($success);
+            }
         }
     }
     public function deletesubcategory()
@@ -88,7 +89,7 @@ class SubCategoryController
             $subcategory = $this->test_input($_POST['subcategory_name']);
             $desc = $this->test_input($_POST['desc_subcategory']);
             session_start();
-            if ($subcategory != "") {
+            if ($subcategory != "" && $desc != "") {
                 $data = array(
                     'ID' => $id,
                     'Category_ID' => $category_id,

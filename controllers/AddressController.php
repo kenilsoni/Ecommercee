@@ -34,14 +34,12 @@ class AddressController
     }
     public function add_countrydata()
     {
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $country = $this->test_input($_POST['country']);
             session_start();
             if ($country != "") {
                 $success = $this->model->add_countrydb($country);
                 if ($success == 1) {
-
                     $_SESSION['addcountry_token'] = true;
                     header("location:?controller=Address&function=add_country");
                 } else {
@@ -56,7 +54,6 @@ class AddressController
     }
     public function update_country()
     {
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['id'];
             $country = $this->test_input($_POST['country']);
@@ -80,7 +77,6 @@ class AddressController
     }
     public function delete_country()
     {
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['id'];
 
@@ -107,7 +103,6 @@ class AddressController
     }
     public function add_statedata()
     {
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $cid = $_POST['cid'];
             $state = $this->test_input($_POST['state']);
@@ -131,12 +126,10 @@ class AddressController
     }
     public function update_state()
     {
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stateid = $_POST['state_id'];
             $country = $_POST['cid'];
             $state = $this->test_input($_POST['state']);
-
 
             session_start();
             if ($state != "") {
@@ -157,7 +150,6 @@ class AddressController
     }
     public function delete_state()
     {
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['id'];
 
@@ -250,7 +242,6 @@ class AddressController
     }
     public function delete_city()
     {
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_POST['id'];
 

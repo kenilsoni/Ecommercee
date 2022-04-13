@@ -15,6 +15,7 @@ class ProductModel
             die();
         }
     }
+    // color start
     public function color_data()
     {
         $sql = "SELECT * FROM product_color";
@@ -31,18 +32,18 @@ class ProductModel
         $success = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $success;
     }
-    public function add_colordb($color,$code)
+    public function add_colordb($color, $code)
     {
         $sql = "INSERT INTO product_color (Product_Color,Color_Code) VALUES (?,?)";
         $stmt = $this->conn->prepare($sql);
-        $success = $stmt->execute([$color,$code]);
+        $success = $stmt->execute([$color, $code]);
         return $success;
     }
-    public function update_color($color,$id,$code)
+    public function update_color($color, $id, $code)
     {
         $sql = "UPDATE product_color SET Product_Color=?,Color_Code=?,Modified_At=NOW() WHERE ID=?";
         $stmt = $this->conn->prepare($sql);
-        $success = $stmt->execute([$color,$code,$id]);
+        $success = $stmt->execute([$color, $code, $id]);
         return $success;
     }
     public function delete_color($id)
@@ -137,7 +138,7 @@ class ProductModel
     {
         $sql = "UPDATE product SET Product_Name=:product_name,Product_Description=:product_desc,Product_Price=:price,Product_Quantity=:quantity,Product_Color_ID=:color,Product_Size=:size,Category_ID=:category,Subcategory_ID=:subcategory,IsTrending=:trend,Modified_At=NOW() WHERE ID=:id";
         $stmt = $this->conn->prepare($sql);
-        $success=$stmt->execute($data);
+        $success = $stmt->execute($data);
         return $success;
     }
     public function delete_product($id)
@@ -147,19 +148,27 @@ class ProductModel
         $success = $stmt->execute([$id]);
         return $success;
     }
-    public function fetch_image($id){
-        $sql = "SELECT Image_Path FROM product_image WHERE Product_ID=?";
+    public function fetch_image($id)
+    {
+        $sql = "SELECT ID,Image_Path FROM product_image WHERE Product_ID=?";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$id]);
         $success = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $success;
-
     }
-    // public function update_imagedb($data, $id)
-    // {
-    //     $sql = "UPDATE product_image SET (Image_Path=?) WHERE ";
-    //     $stmt = $this->conn->prepare($sql);
-    //     $success = $stmt->execute([$id, $data]);
-    //     return $success;
-    // }
+    public function fetch_image_table($id)
+    {
+        $sql = "SELECT ID,Image_Path FROM product_image WHERE ID=?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$id]);
+        $success = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $success;
+    }
+    public function image_delete($id)
+    {
+        $sql = "DELETE FROM product_image WHERE ID=?";
+        $stmt = $this->conn->prepare($sql);
+        $success = $stmt->execute([$id]);
+        return $success;
+    }
 }
