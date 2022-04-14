@@ -163,7 +163,7 @@
                             <div class="card-body">
                                 <form id="validate_form" action="?controller=Address&function=add_countrydata" method="post">
                                     <div class="form-group">
-                                        <label for="inputText3" class="col-form-label">Country Name</label>
+                                        <label for="inputText3" class="col-form-label">Country Name</label><span class="star">*</span>
                                         <input id="inputText3" type="text" class="form-control country-name" name="country" placeholder="Country Name">
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-block">Add Country</button>
@@ -181,7 +181,7 @@
                                 <form id="validate_form1" action="?controller=Address&function=update_country" method="post">
                                     <div class="form-group">
                                         <input type="hidden" class="update_id" name="id">
-                                        <label for="inputText3" class="col-form-label">Country Name</label>
+                                        <label for="inputText3" class="col-form-label">Country Name</label><span class="star">*</span>
                                         <input id="inputText3" type="text" class="form-control countryinput" name="country" placeholder="Country Name">
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-block">Update Country</button>

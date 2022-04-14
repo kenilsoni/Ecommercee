@@ -30,6 +30,9 @@ if (!isset($_SESSION['ID'])) {
     .error{
         color:red;
     }
+    .star{
+        color:red;
+    }
 </style>
 <body>
     <div class="dashboard-header">

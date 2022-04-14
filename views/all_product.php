@@ -10,10 +10,6 @@
 <!-- wrapper  -->
 <!-- ============================================================== -->
 <style>
-    .error {
-        color: red;
-    }
-
     .imgGallery img {
         width: 100px;
         height: 100px;
@@ -214,30 +210,30 @@
 
                                     <div class="form-group">
                                         <input type="hidden" class="product-id" name="id">
-                                        <label for="inputText1" class="col-form-label">Product Name</label>
+                                        <label for="inputText1" class="col-form-label">Product Name</label><span class="star">*</span>
                                         <input id="inputText1" type="text" class="form-control product_name" name="product_name" placeholder="Product Name" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleFormControlTextarea1">Product Description</label>
+                                        <label for="exampleFormControlTextarea1">Product Description</label><span class="star">*</span>
                                         <textarea class="form-control product_desc" name="product_desc" id="exampleFormControlTextarea1" rows="3" required></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText4" class="col-form-label">Price (Per Unit)</label>
+                                        <label for="inputText4" class="col-form-label">Price (Per Unit)</label><span class="star">*</span>
                                         <input id="inputText4" type="number" name="product_price" class="form-control product_price" placeholder="Price" min="0" max="99999" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText6" class="col-form-label">Quantity</label>
+                                        <label for="inputText6" class="col-form-label">Quantity</label><span class="star">*</span>
                                         <input id="inputText6" type="number" name="product_quantity" class="form-control product_quantity" placeholder="Quantity" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Category">Category</label><br>
+                                        <label for="Category">Category</label><span class="star">*</span><br>
                                         <select class="form-control product_category" name="product_category" id="Category" required>
                                             <option value="" selected>Select</option>
 
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Sub_Category">Sub Category</label><br>
+                                        <label for="Sub_Category">Sub Category</label><span class="star">*</span><br>
                                         <select class="form-control product_subcategory" name="product_subcategory" id="Sub_Category" required>
                                             <option value="" selected>Select</option>
 
@@ -254,7 +250,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="product_color">Product Color</label><br>
+                                        <label for="product_color">Product Color</label><span class="star">*</span><br>
                                         <select class="form-control  selectpicker" id="product_color" name="product_color[]" multiple required>
                                             <?php
                                             session_start();
@@ -269,7 +265,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="product_size">Product Size</label><br>
+                                        <label for="product_size">Product Size</label><span class="star">*</span><br>
                                         <select class="form-control selectpicker" id="product_size" name="product_size[]" multiple required>
                                             <?php
                                             session_start();

@@ -163,19 +163,19 @@
                             <div class="card-body">
                                 <form id="validate_form" action="?controller=Address&function=add_citydata" method="post">
                                     <div class="form-group">
-                                        <label for="Category">Select Country</label><br>
+                                        <label for="Category">Select Country</label><span class="star">*</span><br>
                                         <select class="form-control Country" name="cid">
                                             <option value="" selected>Select</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Category">Select State</label><br>
+                                        <label for="Category">Select State</label><span class="star">*</span><br>
                                         <select class="form-control State" name="sid">
                                             <option value="" selected>Select</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText3" class="col-form-label">City Name</label>
+                                        <label for="inputText3" class="col-form-label">City Name</label><span class="star">*</span>
                                         <input id="inputText3" type="text" class="form-control add-city" name="city" placeholder="City Name">
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-block">Add City</button>
@@ -193,19 +193,19 @@
                                 <form id="validate_form1" action="?controller=Address&function=update_city" method="post">
                                     <div class="form-group">
                                         <input type="hidden" class="city-id" name="city_id">
-                                        <label for="country">Select Country</label><br>
+                                        <label for="country">Select Country</label><span class="star">*</span><br>
                                         <select class="form-control Country" name="cid" id="country_update">
                                             <option value="" selected>Select</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="state">Select State</label><br>
+                                        <label for="state">Select State</label><span class="star">*</span><br>
                                         <select class="form-control State" name="sid" id="state_update">
                                             <option value="" selected>Select</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText3" class="col-form-label">City Name</label>
+                                        <label for="inputText3" class="col-form-label">City Name</label><span class="star">*</span>
                                         <input id="inputText3" type="text" class="form-control city-name" name="city" placeholder="City Name">
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-block">Update City</button>

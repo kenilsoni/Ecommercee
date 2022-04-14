@@ -163,7 +163,7 @@
                             <div class="card-body">
                                 <form id="validate_form" action="?controller=Product&function=add_sizedata" method="post">
                                     <div class="form-group">
-                                        <label for="inputText3" class="col-form-label">Size Name</label>
+                                        <label for="inputText3" class="col-form-label">Size Name</label><span class="star">*</span>
                                         <input id="inputText3" type="text" class="form-control add-size" name="size" placeholder="Size Name">
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-block">Add Size</button>
@@ -185,7 +185,7 @@
                                 <form id="validate_form1" action="?controller=Product&function=update_size" method="post">
                                     <div class="form-group">
                                         <input type="hidden" class="size-id" name="size_id">
-                                        <label for="inputText3" class="col-form-label">Size Name</label>
+                                        <label for="inputText3" class="col-form-label">Size Name</label><span class="star">*</span>
                                         <input id="inputText3" type="text" class="form-control size-name" name="size" placeholder="Size Name">
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-block">Update Size</button>

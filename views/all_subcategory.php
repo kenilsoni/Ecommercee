@@ -160,17 +160,17 @@
                                 <form id="validate_form" action="?controller=SubCategory&function=update_subcategory" method="post">
                                     <div class="form-group">
                                         <input type="hidden" class="update_id" name="update_id">
-                                        <label for="Category">Category</label><br>
+                                        <label for="Category">Category</label><span class="star">*</span><br>
                                         <select class="form-control category_id" name="Category" id="Category">
                                             <option value="" selected>Select</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText3">Sub Category</label><br>
+                                        <label for="inputText3">Sub Category</label><span class="star">*</span><br>
                                         <input id="inputText3" type="text" class="form-control subcategory_input" name="subcategory_name" placeholder="SubCategory Name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleFormControlTextarea1">Description</label>
+                                        <label for="exampleFormControlTextarea1">Description</label><span class="star">*</span>
                                         <textarea class="form-control" name="desc_subcategory" id="subcategory_desc" rows="3" id="exampleFormControlTextarea1" placeholder="Description"></textarea>
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-block">Update SubCategory</button>

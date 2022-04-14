@@ -162,11 +162,11 @@
                             <div class="card-body">
                                 <form id="validate_form" action="?controller=Product&function=add_colordata" method="post">
                                     <div class="form-group">
-                                        <label for="inputText3" class="col-form-label">Color Name</label>
+                                        <label for="inputText3" class="col-form-label">Color Name</label><span class="star">*</span>
                                         <input id="inputText3" type="text" class="form-control add-color" name="color_name" placeholder="Color Name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText3" class="col-form-label">Select Color</label>
+                                        <label for="inputText3" class="col-form-label">Select Color</label><span class="star">*</span>
                                         <input id="inputText3" type="color" class="form-control color-code" name="color_code">
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-block">Add Color</button>
@@ -188,11 +188,11 @@
                                 <form id="validate_form1" action="?controller=Product&function=update_color" method="post">
                                     <div class="form-group">
                                         <input type="hidden" class="color-id" name="color_id">
-                                        <label for="inputText3" class="col-form-label">Color Name</label>
+                                        <label for="inputText3" class="col-form-label">Color Name</label><span class="star">*</span>
                                         <input id="inputText3" type="text" class="form-control color-name" name="color_name" placeholder="Color Name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText3" class="col-form-label">Select Color</label>
+                                        <label for="inputText3" class="col-form-label">Select Color</label><span class="star">*</span>
                                         <input id="inputText3" type="color" class="form-control color-code" name="color_code">
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-block">Update Color</button>

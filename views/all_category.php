@@ -9,11 +9,7 @@
 <!-- ============================================================== -->
 <!-- wrapper  -->
 <!-- ============================================================== -->
-<style>
-    .error {
-        color: red;
-    }
-</style>
+
 <div class="dashboard-wrapper">
     <div class="dashboard-ecommerce">
         <div class="container-fluid dashboard-content ">
@@ -167,12 +163,12 @@
                                 <form id="validate_form" action="?controller=Category&function=update_category" method="post">
 
                                     <div class="form-group">
-                                        <label for="inputText3" class="col-form-label">Category Name</label>
+                                        <label for="inputText3" class="col-form-label">Category Name</label><span class="star">*</span>
                                         <input type="hidden" class="update_id" name="update_id">
                                         <input id="inputText3" type="text" class="form-control category_input" name="category_name" placeholder="Category Name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleFormControlTextarea1">Description</label>
+                                        <label for="exampleFormControlTextarea1">Description</label><span class="star">*</span>
                                         <textarea class="form-control" name="desc_category" id="category_desc" rows="3" id="exampleFormControlTextarea1" placeholder="Description"></textarea>
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-block">Update Category</button>

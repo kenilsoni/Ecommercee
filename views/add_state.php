@@ -163,13 +163,13 @@
                             <div class="card-body">
                                 <form id="validate_form" action="?controller=Address&function=add_statedata" method="post">
                                     <div class="form-group">
-                                        <label for="Country">Select Country</label><br>
+                                        <label for="Country">Select Country</label><span class="star">*</span><br>
                                         <select class="form-control Country" name="cid">
                                             <option value="" selected>Select</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText3" class="col-form-label">State Name</label>
+                                        <label for="inputText3" class="col-form-label">State Name</label><span class="star">*</span>
                                         <input id="inputText3" type="text" class="form-control add-state" name="state" placeholder="State Name">
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-block">Add State</button>
@@ -190,13 +190,13 @@
                             <form id="validate_form1" action="?controller=Address&function=update_state" method="post">
                                 <div class="form-group">
                                     <input type="hidden" class="state-id" name="state_id">
-                                    <label for="Country">Select Country</label><br>
+                                    <label for="Country">Select Country</label><span class="star">*</span><br>
                                     <select class="form-control Country" name="cid" id="country_update">
                                         <option value="" selected>Select</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputText3" class="col-form-label">State Name</label>
+                                    <label for="inputText3" class="col-form-label">State Name</label><span class="star">*</span>
                                     <input id="inputText3" type="text" class="form-control state-name" name="state" placeholder="State Name">
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-block">Update State</button>

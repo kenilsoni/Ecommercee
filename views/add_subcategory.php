@@ -46,17 +46,17 @@
                             <div class="card-body">
                                 <form id="validate_form" action="?controller=SubCategory&function=addsubcategory" method="post">
                                     <div class="form-group">
-                                        <label for="Category">Select Category</label><br>
+                                        <label for="Category">Select Category</label><span class="star">*</span><br>
                                         <select class="form-control" name="Category" id="Category">
                                             <option value="" selected>Select</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputText3" class="col-form-label">SubCategory Name</label>
+                                        <label for="inputText3" class="col-form-label">SubCategory Name</label><span class="star">*</span>
                                         <input id="inputText3" name="subcategory_name" type="text" class="form-control" placeholder="Name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleFormControlTextarea1">Description</label>
+                                        <label for="exampleFormControlTextarea1">Description</label><span class="star">*</span>
                                         <textarea class="form-control" name="desc_subcategory" id="subcategory_desc" rows="3" id="exampleFormControlTextarea1"  placeholder="Description"></textarea>
                                     </div>
 
